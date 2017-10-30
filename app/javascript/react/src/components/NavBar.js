@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router'
-import BackButton from './BackButton.js'
 
 const NavBar = props => {
   return(
     <div>
-      <Link to='/'> </Link>
-      <h1 className="title">bloom</h1>
+      <Link to='/'><h2 className="title">bloom</h2></Link>
       {props.children}
     </div>
   )

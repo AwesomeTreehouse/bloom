@@ -50,7 +50,7 @@ class TimerContainer extends Component {
       return(
         <div className="timer-component">
           <Countdown date={ Date.now() + this.state.time } />
-          <button className="hollow button" href="#" onClick={this.resetTimer}>Reset</button>
+          <button className="button custom" href="#" onClick={this.resetTimer}>Reset</button>
         </div>
       )
     }
@@ -73,7 +73,7 @@ class TimerContainer extends Component {
           handleFieldChange={this.handleFieldChange}
           />
         <button
-          className="hollow button" href="#"
+          className="button custom" href="#"
           onClick={this.handleClick}>Start</button>
       </div>
     )

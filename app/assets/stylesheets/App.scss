@@ -1,6 +1,13 @@
 .title {
+  margin-left: 2rem;
+  margin-right: 0rem;
   font-family: 'Megrim', cursive;
   color: #DE6262;
+}
+
+.title:hover,
+.title:focus {
+  color: #eeb0b0;
 }
 
 .text {
@@ -12,13 +19,15 @@
   margin: 5rem;
 }
 
-.coffee-container {
+.new-brew-form {
+  margin: 5rem;
 
 }
 
 .button.custom {
   background-color: #B7CBBF;
   margin: 1rem;
+  border-radius: 2px;
 }
 
 .button.custom:hover,
