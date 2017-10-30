@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import InputField from '../components/InputField';
 import CoffeeFormContainer from './CoffeeFormContainer'
 
 class IndexContainer extends Component {
