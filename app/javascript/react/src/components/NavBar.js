@@ -6,7 +6,7 @@ const NavBar = props => {
   return(
     <div>
       <Link to='/'> </Link>
-      <h1 className="page-title"></h1>
+      <h1 className="title">bloom</h1>
       {props.children}
     </div>
   )

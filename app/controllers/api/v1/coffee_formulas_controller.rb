@@ -1,6 +1,6 @@
 module Api
   module V1
-    class CoffeeFormulaController < ApplicationController
+    class CoffeeFormulasController < ApplicationController
       skip_before_action :verify_authenticity_token, only: [:create]
 
       def index
