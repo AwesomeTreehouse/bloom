@@ -22,6 +22,7 @@
     "karma-webpack": "^2.0.5",
     "phantomjs-prebuilt": "^2.1.15",
     "react-addons-test-utils": "^15.6.2",
+    "react-countdown-now": "^1.2.0",
     "react-test-renderer": "^16.0.0",
     "webpack-dev-server": "^2.9.3"
   }
