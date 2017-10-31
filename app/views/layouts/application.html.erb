@@ -14,6 +14,31 @@
   </head>
 
   <body>
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="title">
+          <p class="site-name"><a href="/">bloom</a></p>
+        </li>
+      </ul>
+
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="sign-in">
+            <a class="sign-in-info" href="#">
+              <% if current_user  %>
+              <span>
+                <h6>Signed in as <%= "#{current_user.first_name} #{current_user.last_name}" %></h6>
+                <%= link_to "Logout", logout_path %>
+              </span>
+              <% else %>
+              <%= link_to "Sign in with Google", "/auth/google" %>
+              <% end %>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </nav>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>

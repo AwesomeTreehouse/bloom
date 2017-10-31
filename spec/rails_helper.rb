@@ -55,10 +55,28 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
 require "capybara/rails"
 require "valid_attribute"
+
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
+      provider: "google",
+      uid: "1234567890987654321",
+      info: {
+        email: "user_email@email.com",
+        first_name: "Al",
+        last_name: "Dante"
+      },
+    credentials: {
+      token: "ya29.Glv1BPagNSC-Xs92uQQ0wHqUN7BWKZ-Z7isJ_65NlWCdqL0QJWQ-gYyfEDPzDC-0ecvnhB3vkfBI7h9W_UUEXX5Wk6ZmyoLrEq2ZN2Jhmxmq4a9bM4GWhdB_znhf",
+      refresh_token: "12345abcdefg",
+      expires_at: DateTime.now
+    }
+  })
+end
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 end
-

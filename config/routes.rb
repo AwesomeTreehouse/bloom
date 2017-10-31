@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'coffee_formulas#index'
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
 
   namespace :api do
     namespace :v1 do
