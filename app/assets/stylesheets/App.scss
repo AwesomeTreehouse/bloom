@@ -1,13 +1,32 @@
+
+nav.top-bar,
+.top-bar,
+.top-bar-right {
+  background-color: white;
+  margin: 0;
+}
+
 .title {
   margin-left: 2rem;
   margin-right: 0rem;
-  font-family: 'Megrim', cursive;
-  color: #DE6262;
 }
 
-.title:hover,
-.title:focus {
+.site-name {
+  font-family: 'Megrim', cursive;
+  color: #DE6262;
+  font-size: 2rem;
+}
+
+.site-name:hover,
+.site-name:focus {
   color: #eeb0b0;
+}
+
+.right,
+.sign-in,
+.sign-in-info {
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .text {
