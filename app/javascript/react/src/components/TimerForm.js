@@ -20,7 +20,7 @@ const TimerForm = props => {
           label='Seconds'
           handleFieldChange={props.handleFieldChange}
         />
-    </div>
+      </div>
     </div>
   )
 }

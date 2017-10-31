@@ -11,6 +11,9 @@ class CoffeeFormContainer extends Component {
         time: 0,
         minutes: 0,
         seconds: 0,
+        coffeeRatio: 1,
+        waterRatio: 16,
+        
         timerRendered: false,
         highlight: ""
     };
@@ -47,6 +50,10 @@ class CoffeeFormContainer extends Component {
     });
   }
 
+  ratioHelper() {
+
+  }
+
   render() {
     if (this.state.timerRendered == true) {
       return(
@@ -60,7 +67,11 @@ class CoffeeFormContainer extends Component {
         <div className="coffee-container">
           <h4>Fill this shit out:</h4>
           <BrewInformation />
-          <RatioHelper />
+          <RatioHelper
+            handleFieldChange={this.handleFieldChange}
+            coffee={this.state.coffeeRatio}
+            water={this.state.waterRatio}
+          />
           <TimerForm
             handleFieldChange={this.handleFieldChange}
           />
