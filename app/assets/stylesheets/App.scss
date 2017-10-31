@@ -1,17 +1,17 @@
 
-nav.top-bar,
-.top-bar,
-.top-bar-right {
-  background-color: white;
+nav.top-bar {
+  background: none;
   margin: 0;
 }
 
-.title {
+.top-bar .title-area {
+  background: none;
   margin-left: 2rem;
   margin-right: 0rem;
 }
 
-.site-name {
+.title {
+  margin-left: 2rem;
   font-family: 'Megrim', cursive;
   color: #DE6262;
   font-size: 2rem;
