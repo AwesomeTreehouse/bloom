@@ -1,4 +1,3 @@
-
 nav.top-bar {
   background: none;
   margin: 0;
@@ -29,18 +28,21 @@ nav.top-bar {
   font-family: 'Open Sans', sans-serif;
 }
 
-.text {
+div.large-12.columns,
+.measure {
+  background-color: rgba(255,255,255,0.6);
   font-family: 'Open Sans', sans-serif;
-  color: gray;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.div {
-  margin: 5rem;
+.h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
 }
 
 .new-brew-form {
   margin: 5rem;
-
 }
 
 .button.custom {
@@ -56,4 +58,29 @@ nav.top-bar {
 
 .start-cancel-buttons {
   margin: auto;
+}
+
+.coffee-container {
+  margin: 40px auto;
+  padding: 40px;
+  background: linear-gradient(white, #eaeeee)
+}
+
+.ratio-helper {
+  background-color: none; }
+
+.timer-component {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 5rem;
+  color: #878787;
+}
+
+.timer-button {
+  margin: 40px auto;
+  padding: 40px;
+}
+
+.water,
+.yeild {
+  margin-bottom: 1rem;
 }

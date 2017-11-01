@@ -4,11 +4,12 @@ const InputField = props => {
   return(
     <form className={props.className}>
       <input
+        id={props.name}
+        placeholder={props.placeholder}
         type={props.type}
         pattern={props.pattern}
-        id={props.name}
         name={props.name}
-        placeholder={props.label}
+        value={props.value}
         onChange={props.handleFieldChange}
       />
   </form>
