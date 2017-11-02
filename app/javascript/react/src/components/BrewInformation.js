@@ -1,32 +1,48 @@
 import React from 'react';
+import InputField from './InputField'
 
 const BrewInformation = props => {
+
+  let toolOptions = props.tools.map(option => {
+    return (
+      <option key={option} value={option}>{option}</option>
+    );
+  })
+
+  let grindOptions = props.grinds.map(option => {
+    return (
+      <option key={option} value={option}>{option}</option>
+    );
+  })
+
   return(
-    <div>
-      <h4>Tool:</h4>
-        <form className={props.className}>
-          <input
-            type='text'
-            placeholder='ratio'
+    <div className="row">
+      <label>Beans
+        <InputField
+          type='text'
+          name='beans'
+          handleFieldChange={props.handleFieldChange}
           />
-        </form>
+      </label>
 
-      <h4>Beans:</h4>
-        <form className={props.className}>
-          <input
-            type='text'
-            placeholder='ratio'
-          />
-        </form>
+      <label>Brewing Tool
+        <select
+          value={props.toolSelected}
+          onChange={props.handleToolSelection}>
+          <option value=""></option>
+          {toolOptions}
+        </select>
+      </label>
 
-      <h4>Grind:</h4>
-        <form className={props.className}>
-          <input
-            type='text'
-            placeholder='ratio'
-          />
-        </form>
-    </div>
+      <label>Grind
+        <select
+          value={props.grindSelected}
+          onChange={props.handleGrindSelection}>
+          <option value=""></option>
+          {grindOptions}
+        </select>
+      </label>
+  </div>
   )
 }
 

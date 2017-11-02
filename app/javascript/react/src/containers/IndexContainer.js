@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CoffeeFormContainer from './CoffeeFormContainer'
+import { Link } from 'react-router'
 
 class IndexContainer extends Component {
   constructor(props) {
@@ -20,21 +20,16 @@ class IndexContainer extends Component {
   }
 
   render() {
-    if (this.state.coffeeForm == false) {
-      return(
+    return(
+      <div className="medium-12 columns">
         <div className="text-center">
-          <button className="button custom" href="#" onClick={this.handleShowForm}>START A NEW BREW</button>
+        <p>BREW SOME DAMN FINE COFFEE</p>
+          <button className="button custom" href="#" >
+            <Link to='/form'>START A NEW BREW</Link>
+          </button>
         </div>
-      )
-    } else {
-      return(
-        <div className="new-brew-form">
-          <div className="text-center">
-            <CoffeeFormContainer />
-          </div>
-        </div>
-      )
-    }
+      </div>
+    )
   }
 }
 
