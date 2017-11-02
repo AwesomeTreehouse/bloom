@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Codystar" rel="stylesheet">
 
     <title><%= content_for?(:title) ? yield(:title) : "BLOOM" %></title>
 
@@ -13,29 +14,22 @@
   </head>
 
   <body>
-    <nav class="top-bar" >
+    <nav class="top-bar">
       <ul class="title-area">
         <li class="title">
-          <a href="/">bloom</a>
+          <a id="title" href="/">bloom</a>
         </li>
       </ul>
 
-      <section class="top-bar-section">
-        <ul class="right">
-          <li class="sign-in">
-            <a class="sign-in-info" href="#">
-              <% if current_user  %>
-              <span>
-                <h6>Signed in as <%= "#{current_user.first_name} #{current_user.last_name}" %></h6>
-                <%= link_to "Logout", logout_path %>
-              </span>
-              <% else %>
-              <%= link_to "Sign in with Google", "/auth/google" %>
-              <% end %>
-            </a>
-          </li>
-        </ul>
-      </section>
+      <div class="text-right">
+        <p class="sign-in-info" href="#">
+          <% if current_user  %>
+            <p id="hello-user">Hey, <%= "#{current_user.first_name}"%>  <%= link_to "Logout", logout_path %></p>
+          <% else %>
+          <p id="hello-user"><%= link_to "Sign in with Google", "/auth/google" %></p>
+          <% end %>
+        </p>
+      </div>
 
     </nav>
 

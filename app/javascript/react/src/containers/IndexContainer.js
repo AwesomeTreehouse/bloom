@@ -23,10 +23,12 @@ class IndexContainer extends Component {
     return(
       <div className="medium-12 columns">
         <div className="text-center">
-        <p>BREW SOME DAMN FINE COFFEE</p>
-          <button className="button custom" href="#" >
-            <Link to='/form'>START A NEW BREW</Link>
-          </button>
+        <p className="tag-line">BREW SOME DAMN FINE COFFEE</p>
+          <Link to='/form'>
+            <button className="button custom" href="#" >
+              START A NEW BREW
+            </button>
+          </Link>
         </div>
       </div>
     )
