@@ -106,7 +106,16 @@ class CoffeeFormContainer extends Component {
         <div className="small-12 columns">
           <div className="text-center">
             <CountDown date={ Date.now() + this.state.time }>
-              <NewFormula tool={this.state.toolSelected} />
+              <NewFormula
+                beans={this.state.beans}
+                tool={this.state.toolSelected}
+                grind={this.state.grindSelected}
+                measurement={this.state.measurementSelected}
+                ratio={this.state.ratioSelected}
+                grounds={this.state.grounds}
+                minutes={this.state.minutes}
+                seconds={this.state.seconds}
+              />
             </CountDown>
           </div>
         </div>
@@ -114,6 +123,7 @@ class CoffeeFormContainer extends Component {
     } else {
       return(
         <div className="text-center">
+          <p className="form-tagline">FILL THIS OUT</p>
           <div className="coffee-form-container">
             <div className="large-12 columns">
               <div className="medium-12 columns">
@@ -146,10 +156,10 @@ class CoffeeFormContainer extends Component {
                 </div>
               </div>
               <div className="medium-12 columns">
-                <div className="large-6 columns water">
+                <div className="large-6 columns">
                   <h6>Water Weight: {this.state.water} {this.state.measurementSelected}</h6>
                 </div>
-                <div className="large-6 columns yeild">
+                <div className="large-6 columns">
                   <h6>Final Yield: {this.state.finalBrew} {this.state.measurementSelected}</h6>
                 </div>
               </div>
@@ -158,9 +168,7 @@ class CoffeeFormContainer extends Component {
                 />
               <span>
                 <button className="button custom" href="#" onClick={this.handleClick}>START</button>
-                <button className="button custom" href="#" >
-                  <Link to='/'>CANCEL</Link>
-                </button>
+                <Link to='/'><button className="button custom" href="#" >CANCEL</button></Link>
               </span>
             </div>
           </div>
