@@ -9,40 +9,72 @@ nav.top-bar {
   margin-right: 0rem;
 }
 
-.title {
+.top-bar a {
   margin-left: 2rem;
   font-family: 'Megrim', cursive;
   color: #DE6262;
-  font-size: 2rem;
+  font-size: 2.5em;
 }
 
-.site-name:hover,
-.site-name:focus {
+.top-bar a:hover,
+.top-bar a:focus {
   color: #eeb0b0;
 }
 
-.right,
-.sign-in,
-.sign-in-info {
-  background-color: white;
+ul.right {
+  background: none;
+  color: #eeb0b0;
   font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
 }
 
-div.large-12.columns,
-.measure {
-  background-color: rgba(255,255,255,0.6);
+.medium-12.columns label {
   font-family: 'Open Sans', sans-serif;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  font-weight: 200;
 }
 
-.h4 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: lighter;
+.medium-12.columns p {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  font-family: 'Megrim', cursive;
+  font-weight: 100;
+  font-size: 2em;
+  color: #878787;
 }
 
-.new-brew-form {
-  margin: 5rem;
+div.large-12.columns {
+  margin: 40px auto;
+  padding: 40px;
+  background: linear-gradient(#fcfffc, #eaeeee)
+}
+
+.coffee-form-container {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 20px;
+}
+
+.medium-12.columns {
+  background-color: rgba(255,255,255,.5);
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.large-6.columns h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+}
+
+.large-6.columns {
+  margin-top: 5px;
+}
+
+.form-box {
+  background-color: rgba(255,255,255,1);
+}
+
+.select {
+  text-align: center;
 }
 
 .button.custom {
@@ -56,28 +88,24 @@ div.large-12.columns,
   background-color: #8bab98
 }
 
+.button.custom a {
+  color: white;
+}
+
 .start-cancel-buttons {
   margin: auto;
 }
 
-.coffee-container {
-  margin: 40px auto;
-  padding: 40px;
-  background: linear-gradient(#ffffff, #eaeeee)
-}
 
-.timer-component {
+.small-12.columns {
   font-family: 'Open Sans', sans-serif;
-  font-size: 5rem;
+  font-size: 4em;
+  font-weight: 200;
   color: #878787;
+  margin-top: 1em;
 }
 
 .timer-button {
   margin: 40px auto;
   padding: 40px;
-}
-
-.water,
-.yeild {
-  margin-bottom: 1rem;
 }

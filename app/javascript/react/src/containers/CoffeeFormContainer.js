@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
+import { Route, Redirect } from 'react-router'
 import BrewInformation from '../components/BrewInformation';
 import RatioHelper from '../components/RatioHelper';
 import TimerForm from '../components/TimerForm';
 import CountDown from 'react-countdown-now';
+import NewFormula from './NewFormula';
 
 class CoffeeFormContainer extends Component {
   constructor(props) {
@@ -19,11 +22,18 @@ class CoffeeFormContainer extends Component {
         grounds: 0,
         water: 0,
         finalBrew: 0,
+        tools: [ 'AeroPress', 'Bee House', 'Chemex', 'French Press', 'Hario V60', 'Kalita Wave', 'Sowden SoftBrew'],
+        toolSelected: '',
+        grinds: ['Extra Fine', 'Fine', 'Medium-Fine', 'Medium', 'Medium-Coarse', 'Coarse', 'Extra Coarse'],
+        grindSelected: '',
+        beans: '',
         timerRendered: false
     };
     this.handleFieldChange = this.handleFieldChange.bind(this);
-    this.handleRatioSelection = this.handleRatioSelection.bind(this);
+    this.handleToolSelection = this.handleToolSelection.bind(this);
+    this.handleGrindSelection = this.handleGrindSelection.bind(this);
     this.handleMeasurementSelection = this.handleMeasurementSelection.bind(this);
+    this.handleRatioSelection = this.handleRatioSelection.bind(this);
     this.handleBrewMath = this.handleBrewMath.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
@@ -31,6 +41,18 @@ class CoffeeFormContainer extends Component {
 
   handleFieldChange(event) {
     this.setState({ [event.target.id]: event.target.value });
+  }
+
+  handleToolSelection(event) {
+    this.setState({ toolSelected: event.target.value })
+  }
+
+  handleGrindSelection(event) {
+    this.setState({ grindSelected: event.target.value })
+  }
+
+  handleMeasurementSelection(event) {
+    this.setState({ measurementSelected: event.target.value });
   }
 
   handleRatioSelection(event) {
@@ -47,11 +69,6 @@ class CoffeeFormContainer extends Component {
     }
     this.setState({ ratioSelected: event.target.value });
   }
-
-  handleMeasurementSelection(event) {
-    this.setState({ measurementSelected: event.target.value });
-  }
-
 
   handleBrewMath(event) {
     let absorption = event.target.value * 2
@@ -86,41 +103,67 @@ class CoffeeFormContainer extends Component {
   render() {
     if (this.state.timerRendered == true) {
       return(
-        <div className="timer-component">
-          <CountDown date={ Date.now() + this.state.time } />
-          <div className="timer-button">
-            <button className="button custom" href="#" onClick={this.resetTimer}>RESET</button>
+        <div className="small-12 columns">
+          <div className="text-center">
+            <CountDown date={ Date.now() + this.state.time }>
+              <NewFormula tool={this.state.toolSelected} />
+            </CountDown>
           </div>
         </div>
       );
     } else {
       return(
-        <div className="coffee-container">
-          <h4>Fill this shit out:</h4>
-          <BrewInformation />
-          <RatioHelper
-            ratioName='ratio'
-            ratio={this.state.ratio}
-            ratioSelected={this.state.ratioSelected}
-            handleRatioSelection={this.handleRatioSelection}
-
-            measurementName='system of measurement'
-            measurement={this.state.measurement}
-            measurementSelected={this.state.measurementSelected}
-            handleMeasurementSelection={this.handleMeasurementSelection}
-
-            grounds={this.state.grounds}
-            water={this.state.water}
-            finalBrew={this.state.finalBrew}
-            handleBrewMath={this.handleBrewMath}
-          />
-          <TimerForm
-            handleFieldChange={this.handleFieldChange}
-          />
-        <span>
-          <button className="button custom" href="#" onClick={this.handleClick}>START</button>
-          <button className="button custom" href="#" onClick={this.handleClick}>CANCEL</button>
-        </span>
+        <div className="text-center">
+          <div className="coffee-form-container">
+            <div className="large-12 columns">
+              <div className="medium-12 columns">
+                <div className="medium-6 columns">
+                  <BrewInformation
+                    tools={this.state.tools}
+                    toolSelected={this.state.toolSelected}
+                    handleToolSelection={this.handleToolSelection}
+                    grinds={this.state.grinds}
+                    grindSelected={this.state.grindSelected}
+                    handleGrindSelection={this.handleGrindSelection}
+                    handleFieldChange={this.handleFieldChange}
+                    />
+                </div>
+                <div className="medium-6 columns">
+                  <RatioHelper
+                    ratioName='ratio'
+                    ratio={this.state.ratio}
+                    ratioSelected={this.state.ratioSelected}
+                    handleRatioSelection={this.handleRatioSelection}
+                    measurementName='system of measurement'
+                    measurement={this.state.measurement}
+                    measurementSelected={this.state.measurementSelected}
+                    handleMeasurementSelection={this.handleMeasurementSelection}
+                    grounds={this.state.grounds}
+                    water={this.state.water}
+                    finalBrew={this.state.finalBrew}
+                    handleBrewMath={this.handleBrewMath}
+                    />
+                </div>
+              </div>
+              <div className="medium-12 columns">
+                <div className="large-6 columns water">
+                  <h6>Water Weight: {this.state.water} {this.state.measurementSelected}</h6>
+                </div>
+                <div className="large-6 columns yeild">
+                  <h6>Final Yield: {this.state.finalBrew} {this.state.measurementSelected}</h6>
+                </div>
+              </div>
+              <TimerForm
+                handleFieldChange={this.handleFieldChange}
+                />
+              <span>
+                <button className="button custom" href="#" onClick={this.handleClick}>START</button>
+                <button className="button custom" href="#" >
+                  <Link to='/'>CANCEL</Link>
+                </button>
+              </span>
+            </div>
+          </div>
         </div>
       )
     }
