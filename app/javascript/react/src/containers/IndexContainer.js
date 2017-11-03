@@ -5,18 +5,8 @@ class IndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      coffeeForm: false
+
     };
-    this.handleShowForm = this.handleShowForm.bind(this);
-    this.handleHideForm = this.handleHideForm.bind(this);
-  }
-
-  handleShowForm(event) {
-    this.setState({ coffeeForm: true })
-  }
-
-  handleHideForm(event) {
-    this.setState({ coffeeForm: false })
   }
 
   render() {

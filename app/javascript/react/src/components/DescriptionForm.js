@@ -3,7 +3,7 @@ import React from 'react';
 const DescriptionForm = props => {
   return(
     <form className={props.className}>
-      <input
+      <textarea
         id={props.name}
         placeholder={props.placeholder}
         type={props.type}

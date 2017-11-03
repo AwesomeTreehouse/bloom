@@ -37,6 +37,7 @@ class CoffeeFormContainer extends Component {
     this.handleBrewMath = this.handleBrewMath.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
+    this.saveInfo= this.saveInfo.bind(this);
   }
 
   handleFieldChange(event) {
@@ -100,6 +101,25 @@ class CoffeeFormContainer extends Component {
     });
   }
 
+  saveInfo(event) {
+    fetch(`/api/vi/coffee_formulas`, {
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'post',
+      body: JSON.stringify({
+        formula: {
+
+        }
+      })
+    }).then(response => response.json())
+      .then(response => {
+        this.props.router.push(`/coffee_formulas/${response.coffee_formulas.id}`)
+      })
+  }
+
   render() {
     if (this.state.timerRendered == true) {
       return(
@@ -113,6 +133,7 @@ class CoffeeFormContainer extends Component {
                 measurement={this.state.measurementSelected}
                 ratio={this.state.ratioSelected}
                 grounds={this.state.grounds}
+                water={this.state.water}
                 minutes={this.state.minutes}
                 seconds={this.state.seconds}
               />
