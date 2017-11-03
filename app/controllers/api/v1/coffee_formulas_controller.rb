@@ -22,7 +22,7 @@ module Api
 
       private
       def coffee_formula_params
-        params.require(:coffee_formula).permit(:coffee_weight, :water_weight, :coffee_ratio, :water_ratio, :grind, :tool, :beans, :description)
+        params.require(:coffee_formula).permit(:coffee_weight, :water_weight, :ratio, :grind, :tool, :beans)
       end
 
     end

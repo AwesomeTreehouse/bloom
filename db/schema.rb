@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031162948) do
+ActiveRecord::Schema.define(version: 20171103161011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,16 +18,16 @@ ActiveRecord::Schema.define(version: 20171031162948) do
   create_table "coffee_formulas", force: :cascade do |t|
     t.integer "coffee_weight"
     t.integer "water_weight"
-    t.integer "coffee_ratio", null: false
-    t.integer "water_ratio", null: false
     t.string "grind", null: false
     t.string "tool", null: false
-    t.string "beans", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.integer "minutes", null: false
     t.integer "seconds", null: false
+    t.string "ratio", null: false
+    t.string "measurement", null: false
+    t.string "beans"
     t.index ["user_id"], name: "index_coffee_formulas_on_user_id"
   end
 
