@@ -35,7 +35,6 @@ class SaveFormula extends Component {
       }
     });
     this.props.saveFormula(formPayload);
-    debugger;
   }
 
   render() {

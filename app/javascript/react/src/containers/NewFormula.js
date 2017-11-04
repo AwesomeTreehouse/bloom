@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import DescriptionForm from './../components/DescriptionForm'
-import SaveFormula from '../components/SaveFormula'
+
 
 class NewFormula extends Component {
   constructor(props) {
@@ -18,10 +18,10 @@ class NewFormula extends Component {
         seconds: this.props.seconds,
         formulaInfo: []
     }
-    this.saveInfo= this.saveInfo.bind(this);
+    this.saveInfo = this.saveInfo.bind(this);
   }
 
-  saveInfo(formPayload) {
+  saveInfo(event) {
     fetch(`/api/v1/coffee_formulas`, {
       credentials: 'same-origin',
       headers: {
@@ -29,13 +29,24 @@ class NewFormula extends Component {
         'Content-Type': 'application/json'
       },
       method: 'post',
-      body: JSON.stringify(formPayload)
+      body: JSON.stringify({
+        formula: {
+          beans: this.state.beans,
+          tool: this.state.tool,
+          grind: this.state.grind,
+          measurement: this.state.measurement,
+          ratio: this.state.ratio,
+          coffee_weight: parseInt(this.state.grounds),
+          water_weight: parseInt(this.state.water),
+          minutes: parseInt(this.state.minutes),
+          seconds: parseInt(this.state.seconds)
+        }
+      })
     })
     .then(response => response.json())
-    .then(body => {
-      this.setState({
-        formulaInfo: this.state.formulaInfo.concat(body.formula)
-      })
+    .then(response => {
+      let newFormula = this.state.formulaInfo.concat(response)
+      this.setState({ formulaInfo: newFormula })
     })
   }
 
@@ -78,18 +89,16 @@ class NewFormula extends Component {
               <DescriptionForm
                 type='text'
                 />
-              <SaveFormula
-                beans={this.state.beans}
-                tool={this.state.tool}
-                grind={this.state.grind}
-                water={this.state.water}
-                measurement={this.state.measurement}
-                ratio={this.state.ratio}
-                grounds={this.state.grounds}
-                minutes={this.state.minutes}
-                seconds={this.state.seconds}
-                saveFormula={this.saveInfo}
-                />
+              <div className="text-center">
+                <button onClick={this.saveInfo} className="button custom" href="#" >
+                  SAVE
+                </button>
+                <Link to='/saved'>
+                  <button className="button custom" href="#" onClick={this.saveInfo}>
+                    SAVE
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </label>

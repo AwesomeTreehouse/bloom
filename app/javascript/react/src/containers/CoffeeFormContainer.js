@@ -36,8 +36,6 @@ class CoffeeFormContainer extends Component {
     this.handleRatioSelection = this.handleRatioSelection.bind(this);
     this.handleBrewMath = this.handleBrewMath.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.resetTimer = this.resetTimer.bind(this);
-    this.saveInfo= this.saveInfo.bind(this);
   }
 
   handleFieldChange(event) {
@@ -90,34 +88,6 @@ class CoffeeFormContainer extends Component {
         timerRendered: true
       });
     }
-  }
-
-  resetTimer(event) {
-    this.setState({
-      minutes: 0,
-      seconds: 0,
-      time: 0,
-      timerRendered: false
-    });
-  }
-
-  saveInfo(event) {
-    fetch(`/api/vi/coffee_formulas`, {
-      credentials: 'same-origin',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'post',
-      body: JSON.stringify({
-        formula: {
-
-        }
-      })
-    }).then(response => response.json())
-      .then(response => {
-        this.props.router.push(`/coffee_formulas/${response.coffee_formulas.id}`)
-      })
   }
 
   render() {

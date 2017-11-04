@@ -4,6 +4,7 @@ import IndexContainer from './containers/IndexContainer'
 import CoffeeFormContainer from './containers/CoffeeFormContainer'
 import NewFormula from './containers/NewFormula'
 import SavedFormulasContainer from './containers/SavedFormulasContainer'
+import FormulaShowPage from './components/FormulaShowPage'
 
 
 const App = props => {
@@ -11,9 +12,10 @@ const App = props => {
     <Router history={browserHistory}>
       <Route path='/'>
         <IndexRoute component={IndexContainer} />
-          <Route path='/form' component={CoffeeFormContainer} />
-          <Route path='/form' component={NewFormula} />
-          <Route path='formulas' component={SavedFormulasContainer} />
+          <Route path='/new' component={CoffeeFormContainer} />
+          <Route path='/new' component={NewFormula} />
+          <Route path='/formulas' component={SavedFormulasContainer} />
+          <Route path='/formula' component={FormulaShowPage} />
       </Route>
     </Router>
   )

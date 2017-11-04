@@ -5,3 +5,59 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+CoffeeFormula.create(
+  coffee_weight: 16,
+  water_weight: 256,
+  grind: "Medium",
+  tool: "AeroPress",
+  user_id: 1,
+  minutes: 1,
+  seconds: 30,
+  ratio: "16:1",
+  measurement: "grams",
+  beans: "Ethiopian",
+  note: "Very good. Nice fruity flavor."
+)
+
+CoffeeFormula.create(
+  coffee_weight: 40,
+  water_weight: 640,
+  grind: "Medium-Fine",
+  tool: "Hario (V60)",
+  user_id: 1,
+  minutes: 4,
+  seconds: 0,
+  ratio: "16:1",
+  measurement: "grams",
+  beans: "Mexican",
+  note: "Chocolatey but a little over extracted."
+)
+
+CoffeeFormula.create(
+  coffee_weight: 40,
+  water_weight: 640,
+  grind: "Medium",
+  tool: "Sowden SoftBrew",
+  user_id: 1,
+  minutes: 4,
+  seconds: 10,
+  ratio: "16:1",
+  measurement: "grams",
+  beans: "Guatemalan (Medium Roast)",
+  note: "Chocolatey but a little over extracted."
+)
+
+CoffeeFormula.create(
+  coffee_weight: 30,
+  water_weight: 480,
+  grind: "Medium-Coarse",
+  tool: "Sowden SoftBrew",
+  user_id: 1,
+  minutes: 4,
+  seconds: 0,
+  ratio: "16:1",
+  measurement: "grams",
+  beans: "Guatemalan (Medium Roast)",
+  note: "Decent body. Might try finer grind next time."
+)
