@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router'
 
-class SavedFormulasContainer extends Component {
+class FormulaShowPage extends Component {
   constructor(props) {
     super(props);
       this.state = {
-        formulas: {}
+        formulaInfo: {}
       };
     this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
-    fetch(`/api/v1/coffee_formulas`)
+    let formulaId = this.props.params.id;
+    fetch(`/api/v1/coffee_formulas/${formulaId}`)
     .then(response => response.json())
     .then(body => {
-      this.setState({ formulas: body })
-    })
+      this.setState({
+        formulaInfo: body.formulas
+      });
+    });
   }
 
   handleDelete(id) {
@@ -33,9 +36,9 @@ class SavedFormulasContainer extends Component {
 
   render() {
     return(
-      <p>Goodbye World :(</p>
+      <p>Goodbye World</p>
     )
   }
 }
 
-export default withRouter(SavedFormulasContainer);
+export default withRouter(FormulaShowPage);

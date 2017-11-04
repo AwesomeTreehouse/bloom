@@ -14,11 +14,18 @@ class IndexContainer extends Component {
       <div className="medium-12 columns">
         <div className="text-center">
         <p className="tag-line">BREW SOME DAMN FINE COFFEE</p>
-          <Link to='/form'>
+          <Link to='/new'>
             <button className="button custom" href="#" >
               START A NEW BREW
             </button>
           </Link>
+          <div className="text-center">
+            <Link to='/formulas'>
+              <button className="button custom" href="#" >
+                SAVED FORMULAS
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     )
