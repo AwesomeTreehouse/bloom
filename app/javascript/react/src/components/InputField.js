@@ -2,7 +2,7 @@ import React from 'react';
 
 const InputField = props => {
   return(
-    <form className={props.className}>
+    <form id="input-field">
       <input
         id={props.name}
         placeholder={props.placeholder}

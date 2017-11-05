@@ -114,7 +114,6 @@ class CoffeeFormContainer extends Component {
     } else {
       return(
         <div className="text-center">
-          <p className="form-tagline">FILL THIS OUT</p>
           <div className="coffee-form-container">
             <div className="large-12 columns">
               <div className="medium-12 columns">
@@ -148,10 +147,10 @@ class CoffeeFormContainer extends Component {
               </div>
               <div className="medium-12 columns">
                 <div className="large-6 columns">
-                  <h6>Water Weight: {this.state.water} {this.state.measurementSelected}</h6>
+                  <h6>Water Weight:</h6> {this.state.water} {this.state.measurementSelected}
                 </div>
                 <div className="large-6 columns">
-                  <h6>Final Yield: {this.state.finalBrew} {this.state.measurementSelected}</h6>
+                  <h6>Final Yield:</h6> {this.state.finalBrew} {this.state.measurementSelected}
                 </div>
               </div>
               <TimerForm

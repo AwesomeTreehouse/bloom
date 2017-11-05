@@ -37,6 +37,11 @@ nav.top-bar {
 }
 
 // NEW COFFEE FORM
+.coffee-form-container {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 20px;
+}
 
 .tag-line {
   margin-top: 5rem;
@@ -51,43 +56,61 @@ nav.top-bar {
   font-size: 2em;
   color: #878787;
   margin-bottom: 0;
+  text-align: center;
 }
 
-.medium-12.columns label {
+#input-field {
   font-family: 'Open Sans', sans-serif;
   font-weight: 200;
 }
 
-div.large-12.columns {
+.large-12.columns {
   margin: 40px auto;
   padding: 40px;
-  background: linear-gradient(#fffcfc, #eaeeee);
-}
-
-.coffee-form-container {
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-bottom: 20px;
-}
-
-.medium-12.columns {
-  background-color: rgba(255,255,255,.9);
-  border-radius: 3px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  background: linear-gradient(#fff9f9, #eaeeee);
 }
 
 .large-6.columns h6 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 200;
+  font-family: 'Codystar', cursive;
+  font-weight: bold;
 }
 
 .large-6.columns {
   margin-top: 5px;
+  margin-bottom: 5px; font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+  color: #6e6e6e;
 }
 
-.select {
-  text-align: center;
+.medium-12.columns {
+  background-color: rgba(255,255,255,.9);
+  -webkit-box-shadow: 1px 4px 8px 0px rgba(192,192,192,.2);
+  -moz-box-shadow: 1px 4px 8px 0px rgba(192,192,192,.2);
+  box-shadow: 1px 4px 8px 0px rgba(192,192,192,.2);
+  border-radius: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.medium-12.columns label {
+  font-family: 'Codystar', cursive;
+  font-weight: bold;
+}
+
+.medium-12.columns p {
+  margin-bottom: 5px; font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+  color: #6e6e6e;
+}
+
+.small-12.columns {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 4em;
+  font-weight: 200;
+  color: #878787;
+  margin-top: 1em
 }
 
 .button.custom {
@@ -109,24 +132,13 @@ div.large-12.columns {
   margin: auto;
 }
 
-.textarea {
-  height: 200px;
-  width: 300px;
-  padding: 5px;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 200;
-  color: #878787;
-}
-
-.small-12.columns {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 4em;
-  font-weight: 200;
-  color: #878787;
-  margin-top: 1em;
-}
-
 .timer-button {
   margin: 40px auto;
   padding: 40px;
+}
+
+#text-area {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+  color: #878787;
 }

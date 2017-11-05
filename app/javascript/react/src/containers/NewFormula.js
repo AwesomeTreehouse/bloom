@@ -16,14 +16,19 @@ class NewFormula extends Component {
         water: this.props.water,
         minutes: this.props.minutes,
         seconds: this.props.seconds,
+        description: null,
         formulaInfo: []
     }
     this.saveInfo = this.saveInfo.bind(this);
+    this.handleDescription = this.handleDescription.bind(this);
+  }
+
+  handleDescription(event) {
+    this.setState({ description: event.target.value })
   }
 
   saveInfo(event) {
-    fetch(`/api/v1/coffee_formulas`, {
-      credentials: 'same-origin',
+    fetch(`/api/v1/coffee_formulas`, { credentials: 'same-origin',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -39,7 +44,8 @@ class NewFormula extends Component {
           coffee_weight: parseInt(this.state.grounds),
           water_weight: parseInt(this.state.water),
           minutes: parseInt(this.state.minutes),
-          seconds: parseInt(this.state.seconds)
+          seconds: parseInt(this.state.seconds),
+          note: this.state.description
         }
       })
     })
@@ -56,48 +62,46 @@ class NewFormula extends Component {
         <label><p className="form-tagline">Here's your brew:</p>
           <div className="large-12 columns">
             <div className="medium-12 columns">
-              <div className="medium-6 columns">
+              <div className="medium-2 small-6 columns">
                 <label>Beans:
                   <p>{this.state.beans}</p>
                 </label>
               </div>
-              <div className="medium-6 columns">
+              <div className="medium-2 small-6 columns">
                 <label>Tool:
                   <p>{this.state.tool}</p>
                 </label>
               </div>
-              <div className="medium-6 columns">
+              <div className="medium-2 small-6 columns">
                 <label>Grind:
                   <p>{this.state.grind}</p>
                 </label>
               </div>
-              <div className="medium-6 columns">
+              <div className="medium-2 small-6 columns">
                 <label>Ratio:
                   <p>{this.state.ratio}</p>
                 </label>
               </div>
-              <div className="medium-6 columns">
+              <div className="medium-2 small-6 columns">
                 <label>Grounds:
                   <p>{this.state.grounds} {this.state.measurement}</p>
                 </label>
               </div>
-              <div className="medium-6 columns">
+              <div className="medium-2 small-6 columns">
                 <label>Time:
                   <p>{this.state.minutes}m {this.state.seconds}s</p>
                 </label>
               </div>
-              <DescriptionForm
-                type='text'
-                />
               <div className="text-center">
-                <button onClick={this.saveInfo} className="button custom" href="#" >
-                  SAVE
-                </button>
-                <Link to='/saved'>
-                  <button className="button custom" href="#" onClick={this.saveInfo}>
-                    SAVE
-                  </button>
-                </Link>
+                <label>Notes:
+                  <DescriptionForm
+                    type='text'
+                    name='descripton'
+                    handleFieldChange={this.handleDescription}
+                  />
+                </label>
+                <Link to='/saved'><button className="button custom" href="#" onClick={this.saveInfo}>SAVE</button></Link>
+                <Link to='/'><button className="button custom" href="#" >DISCARD</button></Link>
               </div>
             </div>
           </div>

@@ -4,7 +4,8 @@ module Api
       skip_before_action :verify_authenticity_token, only: [:create]
 
       def index
-        formulas = current_user.coffee_formulas
+        # formulas = current_user.coffee_formulas
+        formulas = CoffeeFormula.all
         render json: { status: 'SUCCESS', message: 'Loaded coffee formulas', coffee_formulas: formulas }, status: :ok
       end
 
