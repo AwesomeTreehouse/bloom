@@ -40,7 +40,7 @@ const RatioHelper = props => {
         </label>
       </div>
     <div className="large-6 columns">
-      <label>Grounds
+      <label>Coffee Weight
         <InputField
           type='number'
           pattern="[0-9.]*"

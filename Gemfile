@@ -1,10 +1,10 @@
 source 'https://rubygems.org/'
 
-gem 'faker'
 gem 'figaro'
 gem 'foundation-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'httparty'
 gem 'omniauth-google-oauth2'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'

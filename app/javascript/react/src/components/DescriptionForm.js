@@ -2,7 +2,7 @@ import React from 'react';
 
 const DescriptionForm = props => {
   return(
-    <form className={props.className}>
+    <form id='text-area'>
       <textarea
         id={props.name}
         placeholder={props.placeholder}

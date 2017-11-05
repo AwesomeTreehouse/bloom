@@ -14,7 +14,7 @@ const TimerForm = props => {
                 name='minutes'
                 label='Minutes'
                 handleFieldChange={props.handleFieldChange}
-                />
+              />
             </label>
           </div>
           <div className="large-6 small-6 columns">
@@ -25,12 +25,12 @@ const TimerForm = props => {
                 name='seconds'
                 label='Seconds'
                 handleFieldChange={props.handleFieldChange}
-                />
+              />
             </label>
           </div>
         </div>
       </div>
-      </div>
+    </div>
   )
 }
 

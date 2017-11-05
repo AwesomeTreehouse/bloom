@@ -16,6 +16,7 @@ class SavedFormulasContainer extends Component {
     .then(body => {
       this.setState({ formulas: body })
     })
+    console.log(body);
   }
 
   handleDelete(id) {
