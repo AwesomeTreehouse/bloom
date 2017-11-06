@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
+import { withRouter } from 'react-router'
 import DescriptionForm from './../components/DescriptionForm'
 
 
@@ -28,7 +29,8 @@ class NewFormula extends Component {
   }
 
   saveInfo(event) {
-    fetch(`/api/v1/coffee_formulas`, { credentials: 'same-origin',
+    fetch(`/api/v1/coffee_formulas`, {
+      credentials: 'same-origin',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -51,8 +53,7 @@ class NewFormula extends Component {
     })
     .then(response => response.json())
     .then(response => {
-      let newFormula = this.state.formulaInfo.concat(response)
-      this.setState({ formulaInfo: newFormula })
+      this.props.router.push(`/coffee_formulas/${response.coffee_formulas.id}`)
     })
   }
 
@@ -100,7 +101,7 @@ class NewFormula extends Component {
                     handleFieldChange={this.handleDescription}
                   />
                 </label>
-                <Link to='/saved'><button className="button custom" href="#" onClick={this.saveInfo}>SAVE</button></Link>
+                <Link to='/'><button className="button custom" href="#" onClick={this.saveInfo}>SAVE</button></Link>
                 <Link to='/'><button className="button custom" href="#" >DISCARD</button></Link>
               </div>
             </div>
@@ -111,4 +112,4 @@ class NewFormula extends Component {
   }
 }
 
-export default NewFormula;
+export default withRouter(NewFormula);
