@@ -7,11 +7,12 @@ module Api
       def index
         formulas = current_user.coffee_formulas
         render json: { status: 'SUCCESS', message: 'Loaded coffee formulas', coffee_formulas: formulas }, status: :ok
+
       end
 
       def show
         formula = current_user.coffee_formulas.find(params[:id])
-        render json: { status: 'SUCCESS', message: 'Loaded coffee formula', coffee_formulas: formula }, status: :ok
+        render json: { status: 'SUCCESS', message: 'Loaded coffee formula', coffee_formula: formula }, status: :ok
       end
 
       def create
