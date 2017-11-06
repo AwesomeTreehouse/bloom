@@ -2,11 +2,10 @@ module Api
   module V1
     class CoffeeFormulasController < ApplicationController
       skip_before_action :verify_authenticity_token, only: [:create]
+      # before_action :current_user
 
       def index
-        # current_user = current_user
-        # formulas = current_user.coffee_formulas
-        formulas = CoffeeFormula.all
+        formulas = current_user.coffee_formulas
         render json: { status: 'SUCCESS', message: 'Loaded coffee formulas', coffee_formulas: formulas }, status: :ok
       end
 
