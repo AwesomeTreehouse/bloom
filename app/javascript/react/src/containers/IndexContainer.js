@@ -16,6 +16,7 @@ class IndexContainer extends Component {
     .then(body => {
       this.setState({ formulas: body.coffee_formulas })
     })
+    // debugger;
   }
 
   handleDelete(id) {
