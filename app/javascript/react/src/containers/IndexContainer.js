@@ -11,12 +11,17 @@ class IndexContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/coffee_formulas`)
-    .then(response => response.json())
+  fetch(`/api/v1/coffee_formulas.json`, {
+    credentials: 'same-origin',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'GET'
+  }).then(response => response.json())
     .then(body => {
-      this.setState({ formulas: body.coffee_formulas })
-    })
-    // debugger;
+    this.setState({ formulas: body.coffee_formulas })
+  })
   }
 
   handleDelete(id) {

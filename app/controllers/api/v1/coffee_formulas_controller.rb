@@ -5,11 +5,8 @@ module Api
       # before_action :current_user
 
       def index
-        # current_user = current_user
         formulas = current_user.coffee_formulas
-        # formulas = CoffeeFormula.all
         render json: { status: 'SUCCESS', message: 'Loaded coffee formulas', coffee_formulas: formulas }, status: :ok
-
       end
 
       def show
