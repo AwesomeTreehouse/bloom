@@ -5,11 +5,13 @@ const FormulaTile = props => {
   let date = new Date(Date.parse(props.formula.updated_at)).toDateString()
 
   return(
-    <div className="large-12 columns">
-      <div className="medium-12 columns">
-      <Link to={`/coffee_formulas/${props.formula.id}`} >
-        <p>{props.formula.tool} - {date}</p>
-      </Link>
+    <div className="medium-4 columns">
+      <div className="coffee-formula-tile">
+        <Link to={`/coffee_formulas/${props.formula.id}`} >
+          <h6>{date}</h6>
+          <hr/>
+          <p>{props.formula.tool}</p>
+        </Link>
       </div>
     </div>
   )

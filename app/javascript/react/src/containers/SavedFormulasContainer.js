@@ -52,7 +52,7 @@ class SavedFormulasContainer extends Component {
           grind={this.state.formula.grind}
           measurement={this.state.formula.measurement}
           ratio={this.state.formula.ratio}
-          grounds={this.state.formula.grounds}
+          grounds={this.state.formula.coffee_weight}
           water={this.state.formula.water_weight}
           minutes={this.state.formula.minutes}
           seconds={this.state.formula.seconds}

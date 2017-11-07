@@ -71,7 +71,7 @@ class IndexContainer extends Component {
             <button onClick={this.showFormulas} className="button custom" href="#" >
               SAVED BREWS
             </button>
-            <div className="small-12 columns">
+            <div className="row">
               {formulas}
             </div>
           </div>
