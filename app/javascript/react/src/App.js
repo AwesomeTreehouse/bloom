@@ -5,6 +5,7 @@ import CoffeeFormContainer from './containers/CoffeeFormContainer'
 import NewFormula from './containers/NewFormula'
 import SavedFormulasContainer from './containers/SavedFormulasContainer'
 import FormulaShow from './components/FormulaShow'
+import CoffeeFinder from './containers/CoffeeFinder'
 
 
 const App = props => {
@@ -16,6 +17,7 @@ const App = props => {
           <Route path='/save' component={NewFormula} />
           <Route path='/coffee_formulas/:id' component={SavedFormulasContainer} />
           <Route component={FormulaShow} />
+          <Route path='/find' component={CoffeeFinder} />
       </Route>
     </Router>
   )

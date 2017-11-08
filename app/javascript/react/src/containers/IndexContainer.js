@@ -65,6 +65,11 @@ class IndexContainer extends Component {
               <div className="row">
                 {formulas}
               </div>
+              <div id="footer">
+                <Link to="/find">
+                  Find more coffee.
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -78,6 +83,11 @@ class IndexContainer extends Component {
               <button className="button custom" href="#" >
                 START A NEW BREW
               </button>
+              <div id="footer">
+                <Link to="/find">
+                  Find more coffee.
+                </Link>
+              </div>
             </Link>
           </div>
         </div>
