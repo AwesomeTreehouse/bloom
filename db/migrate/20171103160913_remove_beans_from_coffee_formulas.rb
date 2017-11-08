@@ -1,5 +1,5 @@
 class RemoveBeansFromCoffeeFormulas < ActiveRecord::Migration[5.1]
   def change
-    drop_table :notes
+    remove_column :coffee_formulas, :beans
   end
 end

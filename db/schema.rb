@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171107191617) do
     t.integer "water_weight"
     t.string "grind", null: false
     t.string "tool", null: false
+    t.string "beans", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -27,18 +28,10 @@ ActiveRecord::Schema.define(version: 20171107191617) do
     t.integer "seconds", null: false
     t.string "ratio", null: false
     t.string "measurement", null: false
-    t.string "beans"
+    t.string "bean"
     t.string "note"
     t.integer "time"
     t.index ["user_id"], name: "index_coffee_formulas_on_user_id"
-  end
-
-  create_table "notes", force: :cascade do |t|
-    t.text "description", null: false
-    t.bigint "coffee_formula_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["coffee_formula_id"], name: "index_notes_on_coffee_formula_id"
   end
 
   create_table "users", force: :cascade do |t|
