@@ -1,7 +1,6 @@
 // TOP-BAR STYLE
 
 nav.top-bar {
-  position: relative;
   background: none;
 }
 
@@ -36,7 +35,14 @@ nav.top-bar {
   font-weight: 200;
 }
 
+@media screen and (min-width: 200px) {
+  #hello-user {
+    
+  }
+}
+
 // NEW COFFEE FORM
+
 .coffee-form-container {
   margin-left: 40px;
   margin-right: 40px;
@@ -105,6 +111,10 @@ nav.top-bar {
   color: #6e6e6e;
 }
 
+.small-12.columns body{
+
+}
+
 .small-12.columns {
   font-family: 'Open Sans', sans-serif;
   font-size: 4em;
@@ -144,6 +154,9 @@ nav.top-bar {
 }
 
 // TILES & SHOWPAGE
+.all-formula-tiles {
+  margin-bottom: 20px;
+}
 
 .coffee-formula-tile {
   background: linear-gradient(#f3f3f5, #ecedef);
@@ -200,10 +213,15 @@ nav.top-bar {
   padding: 15px;
 }
 
-.formula-show-page h6 {
+.formula-show-page p {
   font-family: 'Open Sans', sans-serif;
   font-weight: 200;
   color: #878787;
+}
+
+.formula-show-page h6 {
+  font-family: 'Codystar', cursive;
+  font-weight: bold;
 }
 
 .inner-tile {
@@ -213,7 +231,7 @@ nav.top-bar {
   box-shadow: 1px 4px 6px 0px rgba(192,192,192,.2);
   margin-top: 5px;
   margin-bottom: 5px;
-  padding: 10px;
+  padding: 15px;
   font-family: 'Open Sans', sans-serif;
   color: #878787;
 }

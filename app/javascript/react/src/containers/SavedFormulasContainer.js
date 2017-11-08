@@ -6,9 +6,11 @@ class SavedFormulasContainer extends Component {
   constructor(props) {
     super(props);
       this.state = {
-        formula: {}
+        formula: {},
+        reuseTimer: false
       };
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleReuseTimer = this.handleReuseTimer.bind(this);
   }
 
   componentDidMount() {
@@ -22,10 +24,7 @@ class SavedFormulasContainer extends Component {
       method: 'GET'
     }).then(response => response.json())
       .then(body => {
-      this.setState({
-        formula: body.coffee_formula
-      })
-      console.log(this.state.formula.tool);
+      this.setState({ formula: body.coffee_formula })
     })
   }
 
@@ -42,6 +41,11 @@ class SavedFormulasContainer extends Component {
     });
   }
 
+  handleReuseTimer(event) {
+    event.preventDefault();
+    this.setState({ reuseTimer: true })
+  }
+
   render() {
     return(
       <div className="text-center">
@@ -56,7 +60,11 @@ class SavedFormulasContainer extends Component {
           water={this.state.formula.water_weight}
           minutes={this.state.formula.minutes}
           seconds={this.state.formula.seconds}
+          time={this.state.formula.time}
+          note={this.state.formula.note}
+          reuseTimer={this.state.reuseTimer}
         />
+        <button className="button custom" onClick={this.handleReuseTimer} href="#">START</button>
       </div>
     )
   }

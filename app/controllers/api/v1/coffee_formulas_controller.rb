@@ -5,9 +5,14 @@ module Api
       # before_action :current_user
 
       def index
-        formulas = current_user.coffee_formulas
-        render json: { status: 'SUCCESS', message: 'Loaded coffee formulas', coffee_formulas: formulas }, status: :ok
-
+        if current_user
+          formulas = current_user.coffee_formulas
+          render json: { status: 'SUCCESS', message: 'Loaded coffee formulas', coffee_formulas: formulas, current_user: current_user }, status: :ok
+        else
+          current_user = "none"
+          formulas = CoffeeFormula.all
+          render json: { status: 'SUCCESS', message: 'Loaded coffee formulas', coffee_formulas: formulas, current_user: current_user}, status: :ok
+        end
       end
 
       def show
@@ -26,7 +31,7 @@ module Api
 
     private
       def coffee_formula_params
-        params.require(:formula).permit(:coffee_weight, :water_weight, :ratio, :grind, :tool, :beans, :minutes, :seconds, :measurement, :note)
+        params.require(:formula).permit(:coffee_weight, :water_weight, :ratio, :grind, :tool, :beans, :minutes, :seconds, :time, :measurement, :note)
       end
 
     end
