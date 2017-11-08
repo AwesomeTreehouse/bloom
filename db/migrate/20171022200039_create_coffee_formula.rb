@@ -7,7 +7,6 @@ class CreateCoffeeFormula < ActiveRecord::Migration[5.1]
       t.integer :water_ratio, null: false
       t.string :grind, null: false
       t.string :tool, null: false
-      t.string :beans, null: false
       t.text :description
 
       t.timestamps null: false
