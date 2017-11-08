@@ -123,6 +123,8 @@ nav.top-bar {
   margin-top: 1em
 }
 
+// BUTTONS AND FORMS
+
 .button.custom {
   background-color: #B7CBBF;
   margin: 1rem;
@@ -131,7 +133,7 @@ nav.top-bar {
 
 .button.custom:hover,
 .button.custom:focus {
-  background-color: #8bab98
+  background-color: #8bab98;
 }
 
 .button.custom a {
@@ -272,7 +274,7 @@ nav.top-bar {
 }
 
 #footer a {
-  color:#efbdbd;
+  color: #eeb0b0;
   font-family: 'Open Sans', sans-serif;
   font-weight: 200;
 }

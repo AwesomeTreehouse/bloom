@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :coffee_formulas, only: [:index, :show, :create, :destroy]
-      resources :static_pages, only: [:index, :create]
+      resources :static_pages, only: [:create]
+      resources :roasters, only: [:index]
     end
   end
 
