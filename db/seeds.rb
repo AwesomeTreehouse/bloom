@@ -17,7 +17,7 @@ CoffeeFormula.create(
   time: 5000,
   ratio: "16:1",
   measurement: "grams",
-  beans: "Ethiopian",
+  bean: "Ethiopian",
   note: "Very good. Nice fruity flavor."
 )
 
@@ -32,7 +32,7 @@ CoffeeFormula.create(
   time: 5000,
   ratio: "16:1",
   measurement: "grams",
-  beans: "Mexican",
+  bean: "Mexican",
   note: "Chocolatey but a little over extracted."
 )
 
@@ -47,7 +47,7 @@ CoffeeFormula.create(
   time: 5000,
   ratio: "16:1",
   measurement: "grams",
-  beans: "Guatemalan (Medium Roast)",
+  bean: "Guatemalan (Medium Roast)",
   note: "Chocolatey but a little over extracted."
 )
 
@@ -62,6 +62,6 @@ CoffeeFormula.create(
   ratio: "16:1",
   time: 5000,
   measurement: "grams",
-  beans: "Guatemalan (Medium Roast)",
+  bean: "Guatemalan (Medium Roast)",
   note: "Decent body. Might try finer grind next time."
 )
