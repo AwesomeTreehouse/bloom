@@ -13,7 +13,7 @@ const App = props => {
       <Route path='/'>
         <IndexRoute component={IndexContainer} />
           <Route path='/new' component={CoffeeFormContainer} />
-          <Route path='/new' component={NewFormula} />
+          <Route path='/save' component={NewFormula} />
           <Route path='/coffee_formulas/:id' component={SavedFormulasContainer} />
           <Route component={FormulaShow} />
       </Route>

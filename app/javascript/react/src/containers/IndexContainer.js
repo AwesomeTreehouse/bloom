@@ -7,9 +7,9 @@ class IndexContainer extends Component {
     super(props);
       this.state = {
         formulas:[],
+        user: {},
         showFormulas: false
       };
-    this.handleDelete = this.handleDelete.bind(this);
     this.showFormulas = this.showFormulas.bind(this);
   }
 
@@ -23,21 +23,11 @@ class IndexContainer extends Component {
     method: 'GET'
   }).then(response => response.json())
     .then(body => {
-      this.setState({ formulas: body.coffee_formulas })
+      this.setState({
+        formulas: body.coffee_formulas,
+        user: body.current_user
+      })
     })
-  }
-
-  handleDelete(id) {
-    fetch(`/api/v1/coffee_formulas/${id}`, {
-      credentials: 'same-origin',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'delete'
-    }).then(response => {
-      this.props.router.push('/');
-    });
   }
 
   showFormulas(event) {
@@ -47,7 +37,7 @@ class IndexContainer extends Component {
 
   render() {
     let formulas;
-    if (this.state.formulas.length !== 0 && this.state.showFormulas == true) {
+    if (this.state.showFormulas == true) {
       formulas = this.state.formulas.map(formula => {
         return(
           <FormulaTile
@@ -58,26 +48,41 @@ class IndexContainer extends Component {
       })
     }
 
-    return(
-      <div>
-        <div className="text-center">
-        <h3 className="tag-line">BREW SOME DAMN FINE COFFEE</h3>
-          <Link to='/new'>
-            <button className="button custom" href="#" >
-              START A NEW BREW
-            </button>
-          </Link>
+    if (this.state.user !== "none") {
+      return(
+        <div className="all-formula-tiles">
           <div className="text-center">
-            <button onClick={this.showFormulas} className="button custom" href="#" >
-              SAVED BREWS
-            </button>
-            <div className="row">
-              {formulas}
+            <h3 className="tag-line">BREW SOME DAMN FINE COFFEE</h3>
+            <Link to='/new'>
+              <button className="button custom" href="#" >
+                START A NEW BREW
+              </button>
+            </Link>
+            <div className="text-center">
+              <button onClick={this.showFormulas} className="button custom" href="#" >
+                SAVED BREWS
+              </button>
+              <div className="row">
+                {formulas}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return(
+        <div className="all-formula-tiles">
+          <div className="text-center">
+            <h3 className="tag-line">BREW SOME DAMN FINE COFFEE</h3>
+            <Link to='/new'>
+              <button className="button custom" href="#" >
+                START A NEW BREW
+              </button>
+            </Link>
+          </div>
+        </div>
+      )
+    }
   }
 }
 

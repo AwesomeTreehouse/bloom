@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 import { withRouter } from 'react-router'
 import DescriptionForm from './../components/DescriptionForm'
 
-
 class NewFormula extends Component {
   constructor(props) {
     super(props);
@@ -17,11 +16,14 @@ class NewFormula extends Component {
         water: this.props.water,
         minutes: this.props.minutes,
         seconds: this.props.seconds,
+        time: this.props.time,
         description: null,
-        formulaInfo: []
+        formulaInfo: [],
+        user: this.props.user,
+        error: 'Here\'s your brew'
     }
-    this.saveInfo = this.saveInfo.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
+    this.saveInfo = this.saveInfo.bind(this);
   }
 
   handleDescription(event) {
@@ -29,38 +31,44 @@ class NewFormula extends Component {
   }
 
   saveInfo(event) {
-    fetch(`/api/v1/coffee_formulas`, {
-      credentials: 'same-origin',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'post',
-      body: JSON.stringify({
-        formula: {
-          beans: this.state.beans,
-          tool: this.state.tool,
-          grind: this.state.grind,
-          measurement: this.state.measurement,
-          ratio: this.state.ratio,
-          coffee_weight: parseInt(this.state.grounds),
-          water_weight: parseInt(this.state.water),
-          minutes: parseInt(this.state.minutes),
-          seconds: parseInt(this.state.seconds),
-          note: this.state.description
-        }
+    event.preventDefault();
+    if (this.state.user == "none") {
+      this.setState({ error: 'Please sign in to save your formula' })
+    } else {
+      fetch(`/api/v1/coffee_formulas`, {
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({
+          formula: {
+            beans: this.state.beans,
+            tool: this.state.tool,
+            grind: this.state.grind,
+            measurement: this.state.measurement,
+            ratio: this.state.ratio,
+            coffee_weight: parseInt(this.state.grounds),
+            water_weight: parseInt(this.state.water),
+            minutes: parseInt(this.state.minutes),
+            seconds: parseInt(this.state.seconds),
+            time: parseInt(this.state.time),
+            note: this.state.description
+          }
+        })
       })
-    })
-    .then(response => response.json())
-    .then(response => {
-      this.props.router.push(`/coffee_formulas/${response.coffee_formulas.id}`)
-    })
+      .then(response => response.json())
+      .then(response => {
+        this.props.router.push(`/coffee_formulas/${response.coffee_formulas.id}`)
+      })
+    }
   }
 
   render() {
     return(
       <div>
-        <label><p className="form-tagline">Here's your brew:</p>
+        <label><p className="form-tagline">{this.state.error}</p>
           <div className="large-12 columns">
             <div className="medium-12 columns">
               <div className="medium-2 small-6 columns">

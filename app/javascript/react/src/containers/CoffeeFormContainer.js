@@ -27,7 +27,8 @@ class CoffeeFormContainer extends Component {
         grinds: ['Extra Fine', 'Fine', 'Medium-Fine', 'Medium', 'Medium-Coarse', 'Coarse', 'Extra Coarse'],
         grindSelected: '',
         beans: '',
-        timerRendered: false
+        timerRendered: false,
+        user: null,
     };
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handleToolSelection = this.handleToolSelection.bind(this);
@@ -36,6 +37,20 @@ class CoffeeFormContainer extends Component {
     this.handleRatioSelection = this.handleRatioSelection.bind(this);
     this.handleBrewMath = this.handleBrewMath.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    fetch(`/api/v1/coffee_formulas.json`, {
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'GET'
+    }).then(response => response.json())
+      .then(body => {
+        this.setState({ user: body.current_user })
+    })
   }
 
   handleFieldChange(event) {
@@ -106,6 +121,8 @@ class CoffeeFormContainer extends Component {
                 water={this.state.water}
                 minutes={this.state.minutes}
                 seconds={this.state.seconds}
+                time={this.state.time}
+                user={this.state.user}
               />
             </CountDown>
           </div>
@@ -115,7 +132,7 @@ class CoffeeFormContainer extends Component {
       return(
         <div className="text-center">
           <div className="coffee-form-container">
-            <div className="large-12 columns">
+            <div className="large-12 small-12 columns">
               <div className="medium-12 columns">
                 <div className="medium-6 columns">
                   <BrewInformation
@@ -146,11 +163,11 @@ class CoffeeFormContainer extends Component {
                 </div>
               </div>
               <div className="medium-12 columns">
-                <div className="large-6 columns">
-                  <h6>Water Weight:</h6> {this.state.water} {this.state.measurementSelected}
+                <div className="large-6 small-6 columns">
+                  <h6>Water Weight:</h6> <p>{this.state.water} {this.state.measurementSelected}</p>
                 </div>
-                <div className="large-6 columns">
-                  <h6>Final Yield:</h6> {this.state.finalBrew} {this.state.measurementSelected}
+                <div className="large-6 small-6 columns">
+                  <h6>Final Yield:</h6> <p>{this.state.finalBrew} {this.state.measurementSelected}</p>
                 </div>
               </div>
               <TimerForm
