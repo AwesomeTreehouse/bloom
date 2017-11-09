@@ -34,7 +34,7 @@ const FormulaShow = props => {
                     <h6>Tool: </h6><p>{props.tool}</p>
                   </div>
                   <div className="medium-4 small-6 columns">
-                    <h6>Beans: </h6><p>{props.beans}</p>
+                    <h6>Beans: </h6><p>{props.bean}</p>
                   </div>
                   <div className="medium-4 small-6 columns">
                     <h6>Grind: </h6><p>{props.grind}</p>
@@ -73,7 +73,7 @@ const FormulaShow = props => {
               <h6>Tool: </h6><p>{props.tool}</p>
             </div>
             <div className="medium-4 small-6 columns">
-              <h6>Beans: </h6><p>{props.beans}</p>
+              <h6>Beans: </h6><p>{props.bean}</p>
             </div>
             <div className="medium-4 small-6 columns">
               <h6>Grind: </h6><p>{props.grind}</p>

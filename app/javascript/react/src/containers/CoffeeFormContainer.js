@@ -26,7 +26,7 @@ class CoffeeFormContainer extends Component {
         toolSelected: '',
         grinds: ['Extra Fine', 'Fine', 'Medium-Fine', 'Medium', 'Medium-Coarse', 'Coarse', 'Extra Coarse'],
         grindSelected: '',
-        beans: '',
+        bean: '',
         timerRendered: false,
         user: null,
     };
@@ -112,7 +112,7 @@ class CoffeeFormContainer extends Component {
           <div className="text-center">
             <CountDown date={ Date.now() + this.state.time }>
               <NewFormula
-                beans={this.state.beans}
+                bean={this.state.bean}
                 tool={this.state.toolSelected}
                 grind={this.state.grindSelected}
                 measurement={this.state.measurementSelected}

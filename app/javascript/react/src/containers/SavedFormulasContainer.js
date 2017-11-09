@@ -73,7 +73,7 @@ class SavedFormulasContainer extends Component {
         <FormulaShow
           id={this.state.formula.id}
           date={this.state.formula.updated_at}
-          beans={this.state.formula.bean}
+          bean={this.state.formula.bean}
           tool={this.state.formula.tool}
           grind={this.state.formula.grind}
           measurement={this.state.formula.measurement}

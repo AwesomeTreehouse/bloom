@@ -7,7 +7,7 @@ class NewFormula extends Component {
   constructor(props) {
     super(props);
       this.state = {
-        beans: this.props.beans,
+        bean: this.props.bean,
         tool: this.props.tool,
         grind: this.props.grind,
         measurement: this.props.measurement,
@@ -44,7 +44,7 @@ class NewFormula extends Component {
         method: 'POST',
         body: JSON.stringify({
           formula: {
-            beans: this.state.beans,
+            bean: this.state.bean,
             tool: this.state.tool,
             grind: this.state.grind,
             measurement: this.state.measurement,
