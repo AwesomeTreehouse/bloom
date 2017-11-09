@@ -28,7 +28,28 @@ module Api
         end
       end
 
-    private
+      # def update
+      #   note = current_user.coffee_formulas.find(params[:id])
+      #   note.update(note: params[:note])
+      #   render json: { status: 'SUCCESS', message: 'Updated coffee formula', note: note }, status: :ok
+      # end
+      #
+      # def edit
+      #   formula = current_user.coffee_formulas.find(params[:id])
+      #   render json: { status: 'SUCCESS', message: 'Loaded coffee formula', coffee_formula: formula }, status: :ok
+      # end
+
+      def destroy
+        formula = current_user.coffee_formulas.find(params[:id])
+
+        if formula.destroy
+          render json: { status: 'SUCCESS', message: 'Formula deleted' }
+        else
+          render json: { status: 'FAILURE', message: 'Formula not deleted.' }
+        end
+      end
+
+      private
       def coffee_formula_params
         params.require(:formula).permit(:coffee_weight, :water_weight, :ratio, :grind, :tool, :bean, :minutes, :seconds, :time, :measurement, :note)
       end

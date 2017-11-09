@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
-import { Route, Redirect } from 'react-router'
+import { Link } from 'react-router';
+import { Route, Redirect } from 'react-router';
 import BrewInformation from '../components/BrewInformation';
 import RatioHelper from '../components/RatioHelper';
 import TimerForm from '../components/TimerForm';
@@ -49,8 +49,8 @@ class CoffeeFormContainer extends Component {
       method: 'GET'
     }).then(response => response.json())
       .then(body => {
-        this.setState({ user: body.current_user })
-    })
+        this.setState({ user: body.current_user });
+    });
   }
 
   handleFieldChange(event) {
@@ -58,11 +58,11 @@ class CoffeeFormContainer extends Component {
   }
 
   handleToolSelection(event) {
-    this.setState({ toolSelected: event.target.value })
+    this.setState({ toolSelected: event.target.value });
   }
 
   handleGrindSelection(event) {
-    this.setState({ grindSelected: event.target.value })
+    this.setState({ grindSelected: event.target.value });
   }
 
   handleMeasurementSelection(event) {
@@ -85,14 +85,14 @@ class CoffeeFormContainer extends Component {
   }
 
   handleBrewMath(event) {
-    let absorption = event.target.value * 2
-    let waterAmount = event.target.value * this.state.ratioValue
-    let finalVolume = waterAmount - absorption
+    let absorption = event.target.value * 2;
+    let waterAmount = event.target.value * this.state.ratioValue;
+    let finalVolume = waterAmount - absorption;
     this.setState({
       grounds: event.target.value,
       water: waterAmount,
       finalBrew: finalVolume
-    })
+    });
   }
 
   handleClick(event) {

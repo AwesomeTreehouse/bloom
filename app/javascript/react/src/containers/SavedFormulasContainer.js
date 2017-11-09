@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router'
-import FormulaShow from '../components/FormulaShow'
+import { withRouter } from 'react-router';
+import FormulaShow from '../components/FormulaShow';
 
 class SavedFormulasContainer extends Component {
   constructor(props) {
     super(props);
       this.state = {
         formula: {},
-        reuseTimer: false
+        renderTimer: false,
+        note: ''
       };
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
     this.handleReuseTimer = this.handleReuseTimer.bind(this);
   }
 
   componentDidMount() {
-    let formulaId = this.props.params.id
+    let formulaId = this.props.params.id;
     fetch(`/api/v1/coffee_formulas/${formulaId}.json`, {
       credentials: 'same-origin',
       headers: {
@@ -24,8 +26,8 @@ class SavedFormulasContainer extends Component {
       method: 'GET'
     }).then(response => response.json())
       .then(body => {
-      this.setState({ formula: body.coffee_formula })
-    })
+      this.setState({ formula: body.coffee_formula });
+    });
   }
 
   handleDelete(id) {
@@ -35,21 +37,41 @@ class SavedFormulasContainer extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      method: 'delete'
+      method: 'DELETE'
     }).then(response => {
       this.props.router.push('/');
     });
   }
 
+  handleUpdate(id) {
+  //   fetch(`/api/v1/coffee_formulas/${id}`, {
+  //     credentials: 'same-origin',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     method: 'UPDATE',
+  //     body: JSON.stringify({
+  //       note: {
+  //         note:
+  //       }
+  //     })
+  //   }).then(response => response.json())
+  //     .then(response => {
+  //       this.props.router.push(`/coffee_formulas/${response.coffee_formulas.id}`);
+  //     })
+   }
+
   handleReuseTimer(event) {
-    event.preventDefault();
-    this.setState({ reuseTimer: true })
+    this.setState({ renderTimer: true });
   }
 
   render() {
+    console.log(this.state.formula.time);
     return(
       <div className="text-center">
         <FormulaShow
+          id={this.state.formula.id}
           date={this.state.formula.updated_at}
           beans={this.state.formula.bean}
           tool={this.state.formula.tool}
@@ -62,9 +84,11 @@ class SavedFormulasContainer extends Component {
           seconds={this.state.formula.seconds}
           time={this.state.formula.time}
           note={this.state.formula.note}
-          reuseTimer={this.state.reuseTimer}
+          handleReuseTimer={this.handleReuseTimer}
+          handleDelete={this.handleDelete}
+          handleUpdate={this.handleUpdate}
+          renderTimer={this.state.renderTimer}
         />
-        <button className="button custom" onClick={this.handleReuseTimer} href="#">START</button>
       </div>
     )
   }

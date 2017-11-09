@@ -26,13 +26,13 @@ class IndexContainer extends Component {
       this.setState({
         formulas: body.coffee_formulas,
         user: body.current_user
-      })
-    })
+      });
+    });
   }
 
   showFormulas(event) {
     event.preventDefault();
-    this.setState({ showFormulas: true })
+    this.setState({ showFormulas: true });
   }
 
   render() {
@@ -83,12 +83,12 @@ class IndexContainer extends Component {
               <button className="button custom" href="#" >
                 START A NEW BREW
               </button>
+              </Link>
               <div id="footer">
                 <Link to="/find">
                   Find more coffee.
-                </Link>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </div>
         </div>
       )

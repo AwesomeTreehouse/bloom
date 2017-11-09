@@ -129,6 +129,9 @@ nav.top-bar {
   background-color: #B7CBBF;
   margin: 1rem;
   border-radius: 2px;
+  color: white;
+  font-family: 'Codystar', cursive;
+  font-weight: 100;
 }
 
 .button.custom:hover,
@@ -136,8 +139,15 @@ nav.top-bar {
   background-color: #8bab98;
 }
 
-.button.custom a {
-  color: white;
+.button.custom.delete {
+  background-color: #eeb0b0;
+  margin: 1rem;
+  border-radius: 2px;
+}
+
+.button.custom.delete:hover,
+.button.custom.delete:focus {
+  background-color: #DE6262;
 }
 
 .start-cancel-buttons {
@@ -212,6 +222,7 @@ nav.top-bar {
   -moz-box-shadow: 1px 4px 8px 0px rgba(192,192,192,.2);
   box-shadow: 1px 4px 8px 0px rgba(192,192,192,.2);
   margin: 10px;
+  margin-top: 20px;
   padding: 15px;
 }
 
@@ -222,6 +233,11 @@ nav.top-bar {
 }
 
 .formula-show-page h6 {
+  font-family: 'Codystar', cursive;
+  font-weight: bold;
+}
+
+.formula-show-page h3 {
   font-family: 'Codystar', cursive;
   font-weight: bold;
 }
