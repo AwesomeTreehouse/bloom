@@ -71,7 +71,7 @@ class NewFormula extends Component {
         <h3>{this.state.error}</h3>
         <div className="inner-tile">
           <div className="medium-4 small-6 columns">
-            <h6>Beans: <p>{this.state.beans}</p></h6>
+            <h6>Beans: <p>{this.state.bean}</p></h6>
           </div>
           <div className="medium-4 small-6 columns">
             <h6>Tool: <p>{this.state.tool}</p></h6>

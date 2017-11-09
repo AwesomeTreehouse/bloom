@@ -1,7 +1,7 @@
 module Api
   module V1
     class CoffeeFormulasController < ApplicationController
-      skip_before_action :verify_authenticity_token, only: [:create]
+      skip_before_action :verify_authenticity_token, only: [:create, :update]
 
       def index
         if current_user
@@ -28,16 +28,15 @@ module Api
         end
       end
 
-      # def update
-      #   note = current_user.coffee_formulas.find(params[:id])
-      #   note.update(note: params[:note])
-      #   render json: { status: 'SUCCESS', message: 'Updated coffee formula', note: note }, status: :ok
-      # end
-      #
-      # def edit
-      #   formula = current_user.coffee_formulas.find(params[:id])
-      #   render json: { status: 'SUCCESS', message: 'Loaded coffee formula', coffee_formula: formula }, status: :ok
-      # end
+      def update
+        formula = current_user.coffee_formulas.find(params[:id])
+        formula.update(coffee_formula_params)
+        if formula.save
+        render json: { status: 'SUCCESS', message: 'Updated coffee formula', formula: formula }, status: :ok
+        else
+          head :unprocessable_entity
+        end
+      end
 
       def destroy
         formula = current_user.coffee_formulas.find(params[:id])

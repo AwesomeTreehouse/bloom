@@ -8,11 +8,12 @@ class SavedFormulasContainer extends Component {
       this.state = {
         formula: {},
         renderTimer: false,
-        note: ''
+        descripton: 'NEW'
       };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleReuseTimer = this.handleReuseTimer.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
   }
 
   componentDidMount() {
@@ -44,30 +45,44 @@ class SavedFormulasContainer extends Component {
   }
 
   handleUpdate(id) {
-  //   fetch(`/api/v1/coffee_formulas/${id}`, {
-  //     credentials: 'same-origin',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     method: 'UPDATE',
-  //     body: JSON.stringify({
-  //       note: {
-  //         note:
-  //       }
-  //     })
-  //   }).then(response => response.json())
-  //     .then(response => {
-  //       this.props.router.push(`/coffee_formulas/${response.coffee_formulas.id}`);
-  //     })
+    fetch(`/api/v1/coffee_formulas/${id}`, {
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'PATCH',
+      body: JSON.stringify({
+        formula: {
+          bean: this.state.formula.bean,
+          tool: this.state.formula.tool,
+          grind: this.state.formula.grind,
+          measurement: this.state.formula.measurement,
+          ratio: this.state.formula.ratio,
+          coffee_weight: parseInt(this.state.formula.coffee_weight),
+          water_weight: parseInt(this.state.formula.water_weight),
+          minutes: parseInt(this.state.formula.minutes),
+          seconds: parseInt(this.state.formula.seconds),
+          time: parseInt(this.state.formula.time),
+          note: "New Description"
+        }
+      })
+    })
+    .then(response => response.json())
+    .then(response => {
+      this.props.router.push(`/`);
+    });
    }
 
   handleReuseTimer(event) {
     this.setState({ renderTimer: true });
   }
 
+  handleDescriptionChange(event) {
+    this.setState({ description: event.target.value });
+  }
+
   render() {
-    console.log(this.state.formula.time);
     return(
       <div className="text-center">
         <FormulaShow
@@ -88,6 +103,7 @@ class SavedFormulasContainer extends Component {
           handleDelete={this.handleDelete}
           handleUpdate={this.handleUpdate}
           renderTimer={this.state.renderTimer}
+          handleDescriptionChange={this.handleDescriptionChange}
         />
       </div>
     )

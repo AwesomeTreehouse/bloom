@@ -1,8 +1,6 @@
 import React from 'react';
 import CountDown from 'react-countdown-now';
 import NewFormula from './../containers/NewFormula';
-import DescriptionForm from './DescriptionForm';
-
 
 const FormulaShow = props => {
   let date = new Date(Date.parse(props.date)).toDateString();
@@ -48,9 +46,9 @@ const FormulaShow = props => {
                   <div className="medium-4 small-6 columns">
                     <h6>Water:</h6><p>{props.water} {props.measurement}</p>
                   </div>
-                    <DescriptionForm
-                      
-                    />
+                    <hr/>
+                      <p>{props.note}</p>
+                    <hr/>
                   <div>
                     <h6>Time: </h6><p>{props.minutes}m {props.seconds}s</p>
                   </div>
@@ -87,9 +85,9 @@ const FormulaShow = props => {
             <div className="medium-4 small-6 columns">
               <h6>Water:</h6><p>{props.water} {props.measurement}</p>
             </div>
-            <hr/>
-              <p>{props.note}</p>
-            <hr/>
+              <hr/>
+                <p>{props.note}</p>
+              <hr/>
             <div>
               <h6>Time: </h6><p>{props.minutes}m {props.seconds}s</p>
             </div>
