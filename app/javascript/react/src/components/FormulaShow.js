@@ -1,11 +1,25 @@
 import React from 'react';
 import CountDown from 'react-countdown-now';
-import NewFormula from './../containers/NewFormula'
+import NewFormula from './../containers/NewFormula';
 
 const FormulaShow = props => {
-  let date = new Date(Date.parse(props.date)).toDateString()
+  let date = new Date(Date.parse(props.date)).toDateString();
 
-  if (props.reuseTimer) {
+  let deleteDiv = () => {
+    let handleButtonClick = () => props.handleDelete(props.id);
+    return(
+      <div className="button custom delete" onClick={handleButtonClick}>DELETE</div>
+    )
+  }
+
+  let updateDiv = () => {
+    let handleButtonClick = () => props.handleUpdate(props.id);
+    return(
+      <div className="button custom" onClick={handleButtonClick}>UPDATE</div>
+    )
+  }
+
+  if (props.renderTimer == true) {
     return(
       <div className="small-12 columns">
         <div className="text-center">
@@ -32,19 +46,21 @@ const FormulaShow = props => {
                   <div className="medium-4 small-6 columns">
                     <h6>Water:</h6><p>{props.water} {props.measurement}</p>
                   </div>
-                  <hr/>
-                    <p>{props.note}</p>
-                  <hr/>
+                    <hr/>
+                      <p>{props.note}</p>
+                    <hr/>
                   <div>
                     <h6>Time: </h6><p>{props.minutes}m {props.seconds}s</p>
                   </div>
+                    {updateDiv()}
+                    {deleteDiv()}
                 </div>
               </div>
             </div>
           </CountDown>
         </div>
       </div>
-    );
+    )
   } else {
     return(
       <div className="row">
@@ -69,12 +85,14 @@ const FormulaShow = props => {
             <div className="medium-4 small-6 columns">
               <h6>Water:</h6><p>{props.water} {props.measurement}</p>
             </div>
-            <hr/>
-              <p>{props.note}</p>
-            <hr/>
+              <hr/>
+                <p>{props.note}</p>
+              <hr/>
             <div>
               <h6>Time: </h6><p>{props.minutes}m {props.seconds}s</p>
             </div>
+              <div className="button custom" onClick={props.handleReuseTimer}>START TIMER</div>
+              {deleteDiv()}
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
-import { withRouter } from 'react-router'
-import DescriptionForm from './../components/DescriptionForm'
+import { Link } from 'react-router';
+import { withRouter } from 'react-router';
+import DescriptionForm from './../components/DescriptionForm';
 
 class NewFormula extends Component {
   constructor(props) {
@@ -21,19 +21,19 @@ class NewFormula extends Component {
         formulaInfo: [],
         user: this.props.user,
         error: 'Here\'s your brew'
-    }
+    };
     this.handleDescription = this.handleDescription.bind(this);
     this.saveInfo = this.saveInfo.bind(this);
   }
 
   handleDescription(event) {
-    this.setState({ description: event.target.value })
+    this.setState({ description: event.target.value });
   }
 
   saveInfo(event) {
     event.preventDefault();
     if (this.state.user == "none") {
-      this.setState({ error: 'Please sign in to save your formula' })
+      this.setState({ error: 'Please sign in to save your formula' });
     } else {
       fetch(`/api/v1/coffee_formulas`, {
         credentials: 'same-origin',
@@ -60,61 +60,45 @@ class NewFormula extends Component {
       })
       .then(response => response.json())
       .then(response => {
-        this.props.router.push(`/coffee_formulas/${response.coffee_formulas.id}`)
-      })
+        this.props.router.push(`/coffee_formulas/${response.coffee_formulas.id}`);
+      });
     }
   }
 
   render() {
     return(
-      <div>
-        <label><p className="form-tagline">{this.state.error}</p>
-          <div className="large-12 columns">
-            <div className="medium-12 columns">
-              <div className="medium-2 small-6 columns">
-                <label>Beans:
-                  <p>{this.state.bean}</p>
-                </label>
-              </div>
-              <div className="medium-2 small-6 columns">
-                <label>Tool:
-                  <p>{this.state.tool}</p>
-                </label>
-              </div>
-              <div className="medium-2 small-6 columns">
-                <label>Grind:
-                  <p>{this.state.grind}</p>
-                </label>
-              </div>
-              <div className="medium-2 small-6 columns">
-                <label>Ratio:
-                  <p>{this.state.ratio}</p>
-                </label>
-              </div>
-              <div className="medium-2 small-6 columns">
-                <label>Grounds:
-                  <p>{this.state.grounds} {this.state.measurement}</p>
-                </label>
-              </div>
-              <div className="medium-2 small-6 columns">
-                <label>Time:
-                  <p>{this.state.minutes}m {this.state.seconds}s</p>
-                </label>
-              </div>
-              <div className="text-center">
-                <label>Notes:
-                  <DescriptionForm
-                    type='text'
-                    name='descripton'
-                    handleFieldChange={this.handleDescription}
-                  />
-                </label>
-                <Link to='/'><button className="button custom" href="#" onClick={this.saveInfo}>SAVE</button></Link>
-                <Link to='/'><button className="button custom" href="#" >DISCARD</button></Link>
-              </div>
-            </div>
+      <div className="formula-show-page">
+        <h3>{this.state.error}</h3>
+        <div className="inner-tile">
+          <div className="medium-4 small-6 columns">
+            <h6>Beans: <p>{this.state.bean}</p></h6>
           </div>
-        </label>
+          <div className="medium-4 small-6 columns">
+            <h6>Tool: <p>{this.state.tool}</p></h6>
+          </div>
+          <div className="medium-4 small-6 columns">
+            <h6>Grind: <p>{this.state.grind}</p></h6>
+          </div>
+          <div className="medium-4 small-6 columns">
+            <h6>Ratio: <p>{this.state.ratio}</p></h6>
+          </div>
+          <div className="medium-4 small-6 columns">
+            <h6>Grounds: <p>{this.state.grounds} {this.state.measurement}</p></h6>
+          </div>
+          <div className="medium-4 small-6 columns">
+            <h6>Time: <p>{this.state.minutes}m {this.state.seconds}s</p></h6>
+          </div>
+          <div className="text-center">
+            <h6>Notes:</h6>
+              <DescriptionForm
+                type='text'
+                name='descripton'
+                handleFieldChange={this.handleDescription}
+              />
+            <Link to='/'><button className="button custom" href="#" onClick={this.saveInfo}>SAVE</button></Link>
+            <Link to='/'><button className="button custom" href="#" >DISCARD</button></Link>
+          </div>
+        </div>
       </div>
     );
   }

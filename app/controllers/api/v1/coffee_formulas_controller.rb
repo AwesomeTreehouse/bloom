@@ -1,7 +1,7 @@
 module Api
   module V1
     class CoffeeFormulasController < ApplicationController
-      skip_before_action :verify_authenticity_token, only: [:create]
+      skip_before_action :verify_authenticity_token, only: [:create, :update]
 
       def index
         if current_user
@@ -28,7 +28,27 @@ module Api
         end
       end
 
-    private
+      def update
+        formula = current_user.coffee_formulas.find(params[:id])
+        formula.update(coffee_formula_params)
+        if formula.save
+        render json: { status: 'SUCCESS', message: 'Updated coffee formula', formula: formula }, status: :ok
+        else
+          head :unprocessable_entity
+        end
+      end
+
+      def destroy
+        formula = current_user.coffee_formulas.find(params[:id])
+
+        if formula.destroy
+          render json: { status: 'SUCCESS', message: 'Formula deleted' }
+        else
+          render json: { status: 'FAILURE', message: 'Formula not deleted.' }
+        end
+      end
+
+      private
       def coffee_formula_params
         params.require(:formula).permit(:coffee_weight, :water_weight, :ratio, :grind, :tool, :bean, :minutes, :seconds, :time, :measurement, :note)
       end
