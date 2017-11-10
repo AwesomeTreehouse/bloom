@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :coffee_formulas, only: [:index, :show, :create, :update, :destroy]
-      resources :static_pages, only: [:create]
-      resources :roasters, only: [:create]
+      post '/roasters', to: 'roasters#find_coffee'
     end
   end
 
