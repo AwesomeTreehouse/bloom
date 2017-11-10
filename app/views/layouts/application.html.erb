@@ -16,26 +16,24 @@
   </head>
 
   <body>
-    <nav class="top-bar">
-      <ul class="title-area">
-        <li class="title">
-          <a id="title" href="/">bloom</a>
-        </li>
-      </ul>
+    <div class="navbar-container">
+      <div class="navbar">
+        <div class="title">
+          <a id="logo" href="/">bloom</a>
+        </div>
 
-      <div class="text-right">
-        <p class="sign-in-info" href="#">
-          <% if current_user  %>
-            <p id="hello-user">Hey, <%= "#{current_user.first_name}"%>  <%= link_to "Logout", logout_path %></p>
+        <div class="sign-in">
+          <% if current_user %>
+          Hey, <%="#{current_user.first_name} "%><%=link_to "Logout", logout_path %>
           <% else %>
-          <p id="hello-user"><%= link_to "Sign in with Google", "/auth/google" %></p>
+          <a><%= link_to "Sign in with Google", "/auth/google" %></a>
           <% end %>
-        </p>
+        </div>
       </div>
-    </nav>
+    </div>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
-    
+
   </body>
 </html>

@@ -1,44 +1,48 @@
 // TOP-BAR STYLE
 
-nav.top-bar {
+.navbar-container {
+  font-family: 'Open Sans', sans-serif;
+  color: #878787;
+  font-weight: 200;
   background: none;
+  padding-left: 18px;
+  padding-right: 18px;
+  display: flex, bottom;
+  justify-content: center;
 }
 
-#title {
-  margin-left: 2rem;
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  padding: 0px;
+}
+
+.sign-in {
+  margin-top: 12px;
+}
+
+.sign-in a {
+  color: #DE6262;
+}
+
+.sign-in a:hover,
+.sign-in a:focus {
+  color: #eeb0b0;
+}
+
+#logo {
   font-family: 'Megrim', cursive;
   color: #DE6262;
-  font-size: 2.2em;
+  font-size: 35px;
 }
 
-#title:hover,
-#title:focus {
+#logo:hover,
+#logo:focus {
   color: #eeb0b0;
-}
-
-.top-bar a {
-  background: white;
-  color: #DE6262;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 200;
-}
-
-.top-bar a:hover,
-.top-bar a:focus {
-  color: #eeb0b0;
-}
-
-#hello-user {
-  color: #878787;
-  margin-right: 2rem;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 200;
-}
-
-@media screen and (min-width: 200px) {
-  #hello-user {
-
-  }
 }
 
 // NEW COFFEE FORM
@@ -111,10 +115,6 @@ nav.top-bar {
   color: #6e6e6e;
 }
 
-.small-12.columns body{
-
-}
-
 .small-12.columns {
   font-family: 'Open Sans', sans-serif;
   font-size: 4em;
@@ -166,6 +166,7 @@ nav.top-bar {
 }
 
 // TILES & SHOWPAGE
+
 .all-formula-tiles {
   margin-bottom: 20px;
 }
