@@ -9,65 +9,51 @@ class CoffeeFinder extends Component {
       zipcode: null,
       roasterList: []
     };
-    this.handleFieldChange = this.handleFieldChange.bind(this)
+    this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handlePost = this.handlePost.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
-  }
-
-  componentDidMount(){
-    fetch(`/api/v1/roasters.json`, {
-      credentials: "same-origin",
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": "application/json"
-      },
-      method: 'GET', redirect: 'follow'
-    }).then(response => response.json())
-      .then(body => {
-      this.setState({ roasterList: body.roasters })
-    })
   }
 
   handleFieldChange(event) {
     this.setState({ zipcode: event.target.value });
   }
 
-  handlePost(formPayload) {
-    fetch('/api/v1/static_pages', {
-      credentials: 'same-origin',
-      headers: {
-        "Content-Type": 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(formPayload)
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({ roasterList: body })
-    })
-  }
-
-  handleSearch(event) {
+  handlePost(event) {
     event.preventDefault();
     if (this.state.zipcode == '' || this.state.zipcode == null) {
-      this.setState({ title: 'Please enter a zip-code' })
+      this.setState({ title: 'Please enter a zip-code' });
     } else {
-      let formPayload = {
-        zipcode: this.state.zip
-      }
-      this.handlePost(formPayload);
+
+      fetch('/api/v1/roasters', {
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({ zipcode: this.state.zipcode })
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({ roasterList: body });
+      });
     }
   }
 
   render() {
-    let roasters
+    let roasters;
     if (this.state.roasterList.length !== 0) {
       roasters = this.state.roasterList.map(roaster => {
-
         return(
           <RoasterTile
             key={roaster.id}
-            roaster={roaster}
+            name={roaster.name}
+            address={roaster.location.display_address}
+            image={roaster.image_url}
+            phone={roaster.display_phone}
+            linkAddress={roaster.location.address1}
+            city={roaster.location.city}
+            state={roaster.location.state}
+            zip={roaster.location.zip_code}
           />
         )
       })
@@ -83,11 +69,14 @@ class CoffeeFinder extends Component {
               <label>
                 <input onChange={this.handleFieldChange} id='name' name='name' type='number' pattern="[0-9.]*" placeholder="Enter your zip-code"/>
               </label>
-              <button onClick={this.handleSearch} className="button custom" href="#" >
+
+              <button onClick={this.handlePost} className="button custom" href="#" >
                 SEARCH
               </button>
+
             </fieldset>
           </form>
+          {roasters}
         </div>
       </div>
     );
