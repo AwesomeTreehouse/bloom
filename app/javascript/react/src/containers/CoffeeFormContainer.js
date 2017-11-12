@@ -142,8 +142,9 @@ class CoffeeFormContainer extends Component {
                     grinds={this.state.grinds}
                     grindSelected={this.state.grindSelected}
                     handleGrindSelection={this.handleGrindSelection}
+                    bean={this.state.bean}
                     handleFieldChange={this.handleFieldChange}
-                    />
+                  />
                 </div>
                 <div className="medium-6 columns">
                   <RatioHelper
