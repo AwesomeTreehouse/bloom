@@ -21,7 +21,6 @@ const BrewInformation = props => {
         <InputField
           type='text'
           name='bean'
-          value={props.bean}
           handleFieldChange={props.handleFieldChange}
         />
       </label>

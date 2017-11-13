@@ -29,6 +29,8 @@ class CoffeeFormContainer extends Component {
         bean: '',
         timerRendered: false,
         user: null,
+        errors: {},
+        errorMessage: ''
     };
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handleToolSelection = this.handleToolSelection.bind(this);
@@ -37,6 +39,7 @@ class CoffeeFormContainer extends Component {
     this.handleRatioSelection = this.handleRatioSelection.bind(this);
     this.handleBrewMath = this.handleBrewMath.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.validateInputs = this.validateInputs.bind(this);
   }
 
   componentDidMount() {
@@ -96,16 +99,42 @@ class CoffeeFormContainer extends Component {
   }
 
   handleClick(event) {
-    event.preventDefault();
-    if (this.state.seconds != '' || this.state.minutes != '') {
-      this.setState({
-        time: parseInt(this.state.seconds) * 1000 + parseInt(this.state.minutes) * 60000,
-        timerRendered: true
+  event.preventDefault();
+  if (
+    this.validateInputs(this.state.bean) ||
+    this.validateInputs(this.state.toolSelected) ||
+    this.validateInputs(this.state.grindSelected)
+  ) {
+    this.setState({
+      time: parseInt(this.state.seconds) * 1000 + parseInt(this.state.minutes) * 60000,
+      timerRendered: true
       });
     }
   }
 
+  validateInputs(input) {
+    if (input === '' || input === ' ' ) {
+      let newError = { errorMessage: 'Please fill out all fields.' };
+      this.setState({ errors: Object.assign(this.state.errors, newError) });
+      return false;
+    } else {
+      let errorState = this.state.errors;
+      delete errorState.articleBody;
+      this.setState({ errors: errorState });
+      return true;
+    }
+  }
+
   render() {
+    let errorDiv;
+    let errorItems;
+    if (Object.keys(this.state.errors).length > 0) {
+      errorItems = Object.values(this.state.errors).map(error => {
+        return(<div key={error}>{error}</div>)
+      })
+      errorDiv = <h3>{errorItems}</h3>
+    }
+
     if (this.state.timerRendered == true) {
       return(
         <div className="small-12 columns">
@@ -133,6 +162,7 @@ class CoffeeFormContainer extends Component {
         <div className="text-center">
           <div className="coffee-form-container">
             <div className="large-12 small-12 columns">
+              {errorDiv}
               <div className="medium-12 columns">
                 <div className="medium-6 columns">
                   <BrewInformation
