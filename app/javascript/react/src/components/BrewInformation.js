@@ -20,9 +20,9 @@ const BrewInformation = props => {
       <label>Beans
         <InputField
           type='text'
-          name='beans'
+          name='bean'
           handleFieldChange={props.handleFieldChange}
-          />
+        />
       </label>
 
       <label>Brewing Tool
