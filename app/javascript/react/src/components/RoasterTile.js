@@ -8,7 +8,7 @@ const RoasterTile = props => {
         <img src={props.image}/>
         <h6>{props.name}</h6>
       <hr/>
-        <p>{props.address}</p>
+        <p>{props.address}. {props.city}, {props.state} {props.zip}</p>
         <p>{props.phone}</p>
       </div>
     </div>

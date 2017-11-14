@@ -47,7 +47,14 @@ const FormulaShow = props => {
                     <h6>Water:</h6><p>{props.water} {props.measurement}</p>
                   </div>
                     <hr/>
-                      <p>{props.note}</p>
+                      <form id="input-field">
+                        <input
+                          type='text'
+                          name='note'
+                          value={props.newNote}
+                          onInput={props.handleDescriptionChange}
+                        />
+                      </form>
                     <hr/>
                   <div>
                     <h6>Time: </h6><p>{props.minutes}m {props.seconds}s</p>

@@ -47,10 +47,9 @@ class CoffeeFinder extends Component {
           <RoasterTile
             key={roaster.id}
             name={roaster.name}
-            address={roaster.location.display_address}
             image={roaster.image_url}
             phone={roaster.display_phone}
-            linkAddress={roaster.location.address1}
+            address={roaster.location.address1}
             city={roaster.location.city}
             state={roaster.location.state}
             zip={roaster.location.zip_code}

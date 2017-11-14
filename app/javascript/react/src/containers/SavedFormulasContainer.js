@@ -8,7 +8,7 @@ class SavedFormulasContainer extends Component {
       this.state = {
         formula: {},
         renderTimer: false,
-        descripton: 'NEW'
+        newNote: ''
       };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
@@ -75,11 +75,15 @@ class SavedFormulasContainer extends Component {
    }
 
   handleReuseTimer(event) {
-    this.setState({ renderTimer: true });
-  }
+    if (this.state.renderTimer === true ) {
+      this.setState({ renderTimer: false });
+    } else {
+      this.setState({ renderTimer: true });
+    }
+  };
 
   handleDescriptionChange(event) {
-    this.setState({ description: event.target.value });
+    this.setState({ newNote: event.target.value });
   }
 
   render() {
@@ -99,6 +103,7 @@ class SavedFormulasContainer extends Component {
           seconds={this.state.formula.seconds}
           time={this.state.formula.time}
           note={this.state.formula.note}
+          newNote={this.state.newNote}
           handleReuseTimer={this.handleReuseTimer}
           handleDelete={this.handleDelete}
           handleUpdate={this.handleUpdate}
