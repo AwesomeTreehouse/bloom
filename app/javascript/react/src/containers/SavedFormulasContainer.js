@@ -64,7 +64,7 @@ class SavedFormulasContainer extends Component {
           minutes: parseInt(this.state.formula.minutes),
           seconds: parseInt(this.state.formula.seconds),
           time: parseInt(this.state.formula.time),
-          note: "New Description"
+          note: this.state.newNote
         }
       })
     })
@@ -80,7 +80,7 @@ class SavedFormulasContainer extends Component {
     } else {
       this.setState({ renderTimer: true });
     }
-  };
+  }
 
   handleDescriptionChange(event) {
     this.setState({ newNote: event.target.value });
