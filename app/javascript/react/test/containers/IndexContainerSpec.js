@@ -1,28 +1,35 @@
 import IndexContainer from '../../src/containers/IndexContainer';
-import CoffeeFormContainer from '../../src/containers/CoffeeFormContainer';
+import FormulaTile from '../../src/components/FormulaTile';
 
 describe('IndexContainer', () => {
   let wrapper;
 
   beforeEach(() => {
-    spyOn(IndexContainer.prototype, 'handleShowForm').and.callThrough();
-
     wrapper = mount(
       <IndexContainer
       />
     )
   });
 
-  describe('it should not render CoffeeFormContainer', () => {
-    it('should not render CoffeeFormContainer to the page', () => {
-      expect(wrapper.find(CoffeeFormContainer)).not.toBePresent();
-    });
-  });
-
-  describe('it should render CoffeeFormContainer', () => {
-    it('should render the CoffeeFormContainer to the page', () => {
-      wrapper.setState({ coffeeForm: true });
-      expect(wrapper.find(CoffeeFormContainer)).toBePresent();
+  describe('adds FormulaTile to page', () => {
+    it('should add a coffee formula tile', () => {
+      let formulas = [
+        {
+          bean: 'Test Bean',
+          tool: 'AeroPress',
+          grind: 'Meduim',
+          measurement: 'grams',
+          ratio: '16:1',
+          coffee_weight: 16,
+          water_weight: 256,
+          minutes: 1,
+          seconds: 30,
+          time: 13000,
+          note: 'Good!'
+        }
+      ];
+      wrapper.setState({ formulas: formulas });
+      expect(wrapper).toHaveState('formulas': formulas)
     });
   });
 });

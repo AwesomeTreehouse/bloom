@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import { Link } from 'react-router';
+import CountDown from 'react-countdown-now';
 import FormulaShow from '../components/FormulaShow';
 
 class SavedFormulasContainer extends Component {
@@ -7,7 +9,7 @@ class SavedFormulasContainer extends Component {
     super(props);
       this.state = {
         formula: {},
-        renderTimer: false,
+        reusedTime: null,
         newNote: ''
       };
     this.handleDelete = this.handleDelete.bind(this);
@@ -27,7 +29,10 @@ class SavedFormulasContainer extends Component {
       method: 'GET'
     }).then(response => response.json())
       .then(body => {
-      this.setState({ formula: body.coffee_formula });
+      this.setState({
+        formula: body.coffee_formula,
+        newNote: body.coffee_formula.note
+      });
     });
   }
 
@@ -74,42 +79,45 @@ class SavedFormulasContainer extends Component {
     });
    }
 
-  handleReuseTimer(event) {
-    if (this.state.renderTimer === true ) {
-      this.setState({ renderTimer: false });
-    } else {
-      this.setState({ renderTimer: true });
-    }
+  handleReuseTimer(id) {
+    this.setState({ reusedTime: this.state.formula.time });
   }
 
   handleDescriptionChange(event) {
-    this.setState({ newNote: event.target.value });
+    event.preventDefault();
+    this.setState({
+      newNote: event.target.value,
+      reusedTime: null
+    });
   }
 
   render() {
     return(
-      <div className="text-center">
-        <FormulaShow
-          id={this.state.formula.id}
-          date={this.state.formula.updated_at}
-          bean={this.state.formula.bean}
-          tool={this.state.formula.tool}
-          grind={this.state.formula.grind}
-          measurement={this.state.formula.measurement}
-          ratio={this.state.formula.ratio}
-          grounds={this.state.formula.coffee_weight}
-          water={this.state.formula.water_weight}
-          minutes={this.state.formula.minutes}
-          seconds={this.state.formula.seconds}
-          time={this.state.formula.time}
-          note={this.state.formula.note}
-          newNote={this.state.newNote}
-          handleReuseTimer={this.handleReuseTimer}
-          handleDelete={this.handleDelete}
-          handleUpdate={this.handleUpdate}
-          renderTimer={this.state.renderTimer}
-          handleDescriptionChange={this.handleDescriptionChange}
-        />
+      <div className="small-12 columns">
+        <div className="text-center">
+          <CountDown date={ Date.now() + this.state.reusedTime }>
+            <FormulaShow
+              id={this.state.formula.id}
+              date={this.state.formula.updated_at}
+              bean={this.state.formula.bean}
+              tool={this.state.formula.tool}
+              grind={this.state.formula.grind}
+              measurement={this.state.formula.measurement}
+              ratio={this.state.formula.ratio}
+              grounds={this.state.formula.coffee_weight}
+              water={this.state.formula.water_weight}
+              minutes={this.state.formula.minutes}
+              seconds={this.state.formula.seconds}
+              time={this.state.formula.time}
+              note={this.state.formula.note}
+              newNote={this.state.newNote}
+              handleDescriptionChange={this.handleDescriptionChange}
+              handleUpdate={this.handleUpdate}
+              handleReuseTimer={this.handleReuseTimer}
+              handleDelete={this.handleDelete}
+            />
+          </CountDown>
+        </div>
       </div>
     )
   }

@@ -60,7 +60,7 @@ class IndexContainer extends Component {
             </Link>
             <div className="text-center">
               <button onClick={this.showFormulas} className="button custom" href="#" >
-                SAVED BREWS
+                SAVED FORMULAS
               </button>
               <div className="row">
                 {formulas}
