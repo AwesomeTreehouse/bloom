@@ -125,7 +125,6 @@
   font-size: 4em;
   font-weight: 200;
   color: #878787;
-  margin-top: 1em
 }
 
 // BUTTONS AND FORMS
@@ -320,7 +319,7 @@
   color: #DE6262;
 }
 
-// FOOTER
+// FIND COFFEE LINK
 
 #footer {
 	height: 50px;
@@ -333,12 +332,12 @@
 }
 
 #footer a {
-  color: #eeb0b0;
+  color: #DE6262;
   font-family: 'Open Sans', sans-serif;
   font-weight: 200;
 }
 
 #footer a:hover,
 #footer a:focus {
-  color: #DE6262;
+  color: #eeb0b0;
 }

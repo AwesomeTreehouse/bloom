@@ -64,15 +64,12 @@ class CoffeeFinder extends Component {
           <form>
             <fieldset className="fieldset">
               <legend id="find-coffee">{this.state.title}</legend>
-
               <label>
                 <input onChange={this.handleFieldChange} id='name' name='name' type='number' pattern="[0-9.]*" placeholder="Enter your zip-code"/>
               </label>
-
               <button onClick={this.handlePost} className="button custom" href="#" >
                 SEARCH
               </button>
-
             </fieldset>
           </form>
           {roasters}

@@ -60,7 +60,7 @@ class NewFormula extends Component {
       })
       .then(response => response.json())
       .then(response => {
-        this.props.router.push(`/coffee_formulas/${response.coffee_formulas.id}`);
+        this.props.router.push(`/`);
       });
     }
   }
